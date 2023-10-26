@@ -80,4 +80,4 @@ void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, 
 
     // 繪製太陽內部
     gdImageFilledEllipse(img, center_x, center_y, sun_radius * 1.1, sun_radius * 1.1, white);
-}
+} 
