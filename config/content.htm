@@ -339,3 +339,50 @@ int main() {
 <p>cc gnuplot_ex1_c</p>
 <p>./a.out<img alt="" height="400" src="/images/gnuplot_ex1.png" width="800"/></p>
 <h1>w6</h1>
+<p>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
+<p>void draw_usa_flag(gdImagePtr img);<br/>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);</p>
+<p>int main() {<br/> int width = 800;<br/> int height = (int)(width / 1.9);</p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);</p>
+<p>draw_usa_flag(img);</p>
+<p>FILE *outputFile = fopen("./../images/usa_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "打开输出文件时出错。\n");<br/> return 1;<br/> }</p>
+<p>gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);</p>
+<p>return 0;<br/>}</p>
+<p>void draw_usa_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;<br/> // 国旗颜色<br/> red = gdImageColorAllocate(img, 178, 34, 52); // 红色条纹<br/> white = gdImageColorAllocate(img, 255, 255, 255); // 白色条纹<br/> blue = gdImageColorAllocate(img, 60, 59, 110); // 蓝色矩形</p>
+<p>int stripe_height = height / 13;<br/> int stripe_width = width;<br/> int star_size = (int)(0.0308 * height); // 星星大小</p>
+<p>for (int y = 0; y &lt; height; y += stripe_height) {<br/> if (y / stripe_height % 2 == 0) {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, red);<br/> } else {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, white);<br/> }<br/> }</p>
+<p>gdImageFilledRectangle(img, 0, 0, width * 2 / 5, stripe_height * 7, blue);</p>
+<p>int star_spacing_x = (int)(0.129 * height); // 横向星星之间的间距<br/> int star_spacing_y = (int)(0.054 * height); // 纵向星星之间的间距<br/> int star_start_x = (int)(0.125 * height); // 星星的起始X位置<br/> int star_start_y = (int)(0.0485 * height); // 星星的起始Y位置</p>
+<p>for (int row = 0; row &lt; 9; row++) {<br/> int starsPerRow = (row % 2 == 0) ? 6 : 5;</p>
+<p>// 计算2、4、6和8排星星的偏移量<br/> int offset_x = (row % 2 == 0) ? star_spacing_x / -2 : 0;</p>
+<p>for (int star = 0; star &lt; starsPerRow; star++) {<br/> int x = star_start_x + star * star_spacing_x + offset_x;</p>
+<p>// 旋转角度（以弧度为单位）<br/> double rotation_angle = M_PI / 5; // 忘記多少度的旋转</p>
+<p>int y = star_start_y + row * star_spacing_y;<br/> draw_star(img, x, y, star_size, white, rotation_angle);<br/> }<br/> }<br/>}</p>
+<p>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {<br/> gdPoint points[10];</p>
+<p>for (int i = 0; i &lt; 10; i++) {<br/> double angle = M_PI / 2 + i * 2 * M_PI / 10 + rotation_angle;<br/> int radius = (i % 2 == 0) ? size : size / 2;<br/> points[i].x = x + radius * cos(angle);<br/> points[i].y = y + radius * sin(angle);<br/> }</p>
+<p>// 用指定的颜色填充星星<br/> gdImageFilledPolygon(img, points, 10, color);<br/>}</p>
+<p>clear</p>
+<p>cd downloads</p>
+<p>cc gd_usa_flag.c - lgd- lm</p>
+<p>./a.out</p>
+<p><img alt="" height="211" src="/images/usa_flag.png" width="400"/></p>
+<p>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
+<p>void draw_roc_flag(gdImagePtr img);<br/>void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int white, int red, int blue);</p>
+<p>int main() {<br/> // width 3: height 2<br/> int width = 1200;<br/> int height = (int)(width*2.0 / 3.0);</p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);</p>
+<p>draw_roc_flag(img);</p>
+<p>FILE *outputFile = fopen("./roc_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "Error opening the output file.\n");<br/> return 1;<br/> }<br/> gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);<br/> return 0;<br/>}</p>
+<p>void draw_roc_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;<br/> int center_x = (int)(width/4);<br/> int center_y = (int)(height/4);<br/> int sun_radius = (int)(width/8);</p>
+<p>// Colors for the flag<br/> red = gdImageColorAllocate(img, 242, 0, 0); // Red color<br/> white = gdImageColorAllocate(img, 255, 255, 255); // White stripes<br/> blue = gdImageColorAllocate(img, 0, 41, 204); // Blue</p>
+<p>// 繪製紅色矩形區域<br/> gdImageFilledRectangle(img, 0, 0, width, height, red);</p>
+<p>// 繪製藍色矩形區域<br/> gdImageFilledRectangle(img, 0, 0, (int)(width/2.0), (int)(height/2.0), blue);</p>
+<p>// 繪製太陽<br/> draw_white_sun(img, center_x, center_y, sun_radius, white, red, blue);<br/>}<br/>void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int white, int red, int blue) {<br/> float angle = 0;<br/> int numRays = 12; // 光芒的數量</p>
+<p>gdPoint points[3]; // 三個頂點的陣列</p>
+<p>for (int i = 0; i &lt; numRays; i++) {<br/> angle = i * (2 * M_PI / numRays);<br/> float x1 = center_x + cos(angle) * sun_radius;<br/> float y1 = center_y + sin(angle) * sun_radius;</p>
+<p>// 調整兩個底邊頂點的位置<br/> float x2 = center_x + cos(angle + 0.35) * (sun_radius * 0.5);<br/> float y2 = center_y + sin(angle + 0.35) * (sun_radius * 0.5);<br/> float x3 = center_x + cos(angle - 0.35) * (sun_radius * 0.5);<br/> float y3 = center_y + sin(angle - 0.35) * (sun_radius * 0.5);</p>
+<p>// 設定多邊形的三個頂點<br/> points[0].x = (int)x1;<br/> points[0].y = (int)y1;<br/> points[1].x = (int)x2;<br/> points[1].y = (int)y2;<br/> points[2].x = (int)x3;<br/> points[2].y = (int)y3;</p>
+<p>gdImageFilledPolygon(img, points, 3, white);<br/> }<br/> //外圈<br/> gdImageFilledEllipse(img, center_x, center_y, sun_radius * 1.2, sun_radius * 1.2, blue);</p>
+<p>// 繪製太陽內部<br/> gdImageFilledEllipse(img, center_x, center_y, sun_radius * 1.1, sun_radius * 1.1, white);<br/>}</p>
+<p>clear</p>
+<p>cd downloads</p>
+<p>cc gd_roc_flag.c- lgd- lm</p>
+<p>./a.out</p>
