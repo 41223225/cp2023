@@ -387,4 +387,18 @@ int main() {
 <p>cc gd_roc_flag.c- lgd- lm</p>
 <p>./a.out</p>
 <h1>w12</h1>
+<p>{ pkgs }: {<br/> deps = [<br/> pkgs.llvmPackages_rocm.clang<br/> pkgs.gd<br/> pkgs.gnuplot<br/> ];<br/>}</p>
+<p>#include &lt;stdio.h&gt;</p>
+<p>int main()<br/>{</p>
+<p>printf("hello world\n");<br/>}</p>
+<p>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
+<p>int main() {<br/> int width = 800;<br/> int height = 600;</p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);</p>
+<p>FILE *outputFile = fopen("hellogd.png", "wb");<br/> if (outputFile == NULL) {</p>
+<p>fprintf(stderr, "Error opening the output file.\n");</p>
+<p>return 1;<br/> }</p>
+<p>int red = gdImageColorAllocate(img, 255, 0, 0);<br/> int blue = gdImageColorAllocate(img, 0, 0, 255);<br/> int black = gdImageColorAllocate(img, 0, 0, 0);<br/> int white = gdImageColorAllocate(img, 255, 255, 255);<br/> // 長方形塗色<br/> gdImageFilledRectangle(img, 0, 0, width, height, white);<br/> gdImageFilledRectangle(img, 0, 0, (int)width/4, (int)height/4, blue);<br/> // 橢圓形塗色<br/> gdImageFilledEllipse(img, (int)width*3/4, (int)height/4, (int)width/4, (int)width/4, red);<br/> // 橢圓形畫線<br/> gdImageEllipse(img, (int)width*3/4, (int)height*3/4, (int)width/4, (int)width/4, red);<br/> // 畫直線<br/> gdImageLine(img, (int)width/2, (int)height/2, (int)width/2, (int)height/2 + 100, blue);</p>
+<p>// 多邊形畫線<br/> gdPoint points[4];<br/> points[0].x = (int)width/4;<br/> points[0].y = (int)height*3/4;<br/> points[1].x = points[0].x + 100;<br/> points[1].y = points[0].y;<br/> points[2].x = points[1].x;<br/> points[2].y = points[1].y + 100;<br/> points[3].x = points[2].x - 100;<br/> points[3].y = points[2].y;<br/> gdImagePolygon(img, points, 4, black);</p>
+<p>// 多邊形塗色<br/> gdPoint points2[4];<br/> points2[0].x = (int)width/3;<br/> points2[0].y = (int)height/2;<br/> points2[1].x = points2[0].x + 100;<br/> points2[1].y = points2[0].y;<br/> points2[2].x = points2[1].x;<br/> points2[2].y = points2[1].y + 100;<br/> points2[3].x = points2[2].x - 150;<br/> points2[3].y = points2[2].y;<br/> gdImageFilledPolygon(img, points2, 4, red);</p>
+<p>gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);<br/> return 0;<br/>}</p>
 <p>從近端設計程式與圖形並且傳到github上，再從github下載下來。</p>
