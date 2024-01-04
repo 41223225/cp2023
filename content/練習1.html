@@ -144,18 +144,41 @@ img.add_border {
         </header>
     <div id="tipue_search_content">Exercises111 << <a href='Exercises111.html'>Previous</a> <a href='期末總結.html'>Next</a> >> 期末總結<br /><h1>練習1</h1>
 <p>編寫一個 C 程式來列印您的姓名、出生日期和手機號碼</p>
+<p>解釋:printf打印字     前面就是輸入前面的字:後面就是後面的字</p>
+<p>\n"是換行</p>
 <p><span><img alt="" height="400" src="./../images/練習一，名子.png" width="775"/></span></p>
 <p><br/><span>寫一個C 程序，反向列印下列字元。</span><br/><em><span><span>測試字元</span></span></em><span><span>：'J'、'M'、'O'</span></span><br/><em><span><span>預期輸出</span></span></em><span><span>：</span></span><br/><span><span>JMO 的反面是 OMJ</span></span></p>
+<p><span><span>解釋:</span></span><span><span>printf執行函數char char1 char char2 char char3是分別代表三個字母，</span></span></p>
+<p><span><span>而char1 char2 char3相當於他們的代號，而它從char1~3變成3~1表示順序顛</span></span></p>
+<p><span><span>倒。<code>return 0;</code><span>: 表示程序执行成功并返回值 0，这是主函数的结束标志。</span></span></span></p>
+<p><span><span><span><code>%c%c%c</code><span> 对应着 </span><code>char1</code><span>、</span><code>char2</code><span>、</span><code>char3</code><span>，而 </span><code>%c%c%c</code><span> 对应着 </span><code>char3</code><span>、</span><code>char2</code><span>、</span><code>char1</code><span>，所以它们被打印出来时就呈现出了反转的效果。</span></span></span></span></p>
 <p><span><span><img alt="" height="360" src="./../images/練習一，文字倒反.png" width="800"/></span></span></p>
 <p>用 C 語言編寫一個程序，讀取名字、姓氏和出生年份，並依序顯示姓名和年份。預期輸出：輸入您的名字：林輸入您的姓氏：峻安輸入您的出生年份：2005林峻安 2005</p>
+<p><span class="hljs-type">解釋:char</span><span> firstname[</span><span class="hljs-number">20</span><span>], lastname[</span><span class="hljs-number">20</span><span>]; </span><span class="hljs-comment">// 声明字符数组以存储名和姓，每个数组最大长度为20个字符。</span><span> </span></p>
+<p><span><span class="hljs-type">int</span><span> bir_year; </span><span class="hljs-comment">// 声明一个整数变量 'bir_year' 用于存储出生年份</span></span></p>
+<p><span><span class="hljs-comment"> <span class="hljs-built_in">printf</span><span>(</span><span class="hljs-string">"Input your firstname: "</span><span>); </span><span class="hljs-comment">// 提示用户输入他们的名字</span></span></span></p>
+<p><span><span class="hljs-comment"><span class="hljs-comment"><span class="hljs-built_in">printf</span><span>(</span><span class="hljs-string">"Input your year of birth: "</span><span>); </span><span class="hljs-comment">// 提示用户输入他们的出生年份</span></span></span></span></p>
+<p><span><span class="hljs-comment"><span class="hljs-comment"><span class="hljs-comment"><span class="hljs-built_in">printf</span><span>(</span><span class="hljs-string">"%s %s %d\n"</span><span>, firstname, lastname, bir_year); </span><span class="hljs-comment">// 打印名字、姓氏和出生年份。</span><span> </span><span class="hljs-keyword">return</span><span> </span><span class="hljs-number">0</span><span>; </span><span class="hljs-comment">// 返回0以指示程序成功执行。</span></span></span></span></span></p>
+<p><span><span class="hljs-comment"><span class="hljs-comment"><span class="hljs-comment"><span class="hljs-comment">而在此我犯了一個大錯誤，我不能直接把這些資料輸入在上面，而是應該輸入在./.a.out那邊</span></span></span></span></span></p>
 <p><span><span><span><span><img alt="" height="387" src="./../images/練習一，名子生日排列.png" width="799"/></span></span></span></span></p>
 <p>測試數據：天數：1800預期輸出：年：4週：48天：4</p>
+<p>解釋:這個程式就是將日期先除年分，而禮拜這裡先出現weeks = (days % 365)/7其中days%365就是已經把年份除掉剩下的天數下去除七天(一星期)，而最後的就是把總天數減掉剩餘天數</p>
 <p><img alt="" height="350" src="./../images/練習一，給天數求出幾年、幾周、幾天.png" width="800"/></p>
 <p><span>編寫一個 C 程式來讀取金額（整數值）並將該金額分解為盡可能少的鈔票數量。</span></p>
 <p><span>可能的錢幣有 100、50、20、10、5、2 和 1</span></p>
 <p><span><img alt="" height="381" src="./../images/練習一，給出金錢全額，求出可換成各種單位的數量.png" width="625"/></span></p>
 <p><span><span>寫一個 C 程式來讀取 5 個數字以及它們之間的所有奇數總和。</span><br/><span><span>測試資料</span></span></span></p>
 <p><span><span><span><span>輸入第一個數字：1</span><br/><span><span>輸入第二個數字：3</span></span><br/><span><span>輸入第三個數字：5</span></span><br/><span><span>輸入第四個數字：7</span></span><br/><span><span>輸入第五個數字：9</span></span><br/><span><span>預期輸出：</span></span><br/><span><span>所有奇數總和：25 點</span></span></span></span></span></p>
+<p><span><span><span><span><span>解釋:<span class="hljs-type">int</span><span> </span><span class="hljs-title function_">main</span><span class="hljs-params">()</span><span> { </span><span class="hljs-type">int</span><span> j, numbers[</span><span class="hljs-number">5</span><span>], total=</span><span class="hljs-number">0</span><span>; </span><span class="hljs-comment">// 声明一个数组来存储5个数字和一个用于总和的变量</span><span> </span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span class="hljs-comment">// 提示用户输入第一个数字</span><span> </span><span class="hljs-built_in">printf</span><span>(</span><span class="hljs-string">"\nInput the first number: "</span><span>); </span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span class="hljs-comment">// 从用户输入中读取并存储第一个数字</span><span> </span><span class="hljs-built_in">scanf</span><span>(</span><span class="hljs-string">"%d"</span><span>, &amp;numbers[</span><span class="hljs-number">0</span><span>]);</span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><span class="hljs-comment">// 循环提示用户输入剩余的四个数字</span><span> </span><span class="hljs-keyword">for</span><span> (j = </span><span class="hljs-number">1</span><span>; j &lt; </span><span class="hljs-number">5</span><span>; j++) { </span><span class="hljs-built_in">printf</span><span>(</span><span class="hljs-string">"Input the next number: "</span><span>); </span><span class="hljs-built_in">scanf</span><span>(</span><span class="hljs-string">"%d"</span><span>, &amp;numbers[j]); } </span></span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><span class="hljs-comment">// 计算数字的总和</span><span> </span><span class="hljs-keyword">for</span><span> (j = </span><span class="hljs-number">0</span><span>; j &lt; </span><span class="hljs-number">5</span><span>; j++) { total += numbers[j]; } </span></span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><span class="hljs-comment">// 打印数字的总和</span><span> </span><span class="hljs-built_in">printf</span><span>(</span><span class="hljs-string">"The total is: %d\n"</span><span>, total); </span><span class="hljs-keyword">return</span><span> </span><span class="hljs-number">0</span><span>; }</span></span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><span><span class="hljs-type">int</span><span> j, numbers[</span><span class="hljs-number">5</span><span>], total=</span><span class="hljs-number">0</span><span>; </span><span class="hljs-comment">// 声明一个数组来存储5个数字和一个用于总和的变量</span><span> </span></span></span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><span><span class="hljs-comment">// 使用循环提示用户输入五个数字，并将它们存储在数组中</span><span> </span><span class="hljs-keyword">for</span><span> (j = </span><span class="hljs-number">0</span><span>; j &lt; </span><span class="hljs-number">5</span><span>; j++) { </span><span class="hljs-built_in">printf</span><span>(</span><span class="hljs-string">"\nInput the %s number: "</span><span>, j == </span><span class="hljs-number">0</span><span> ? </span><span class="hljs-string">"first"</span><span> : (j == </span><span class="hljs-number">1</span><span> ? </span><span class="hljs-string">"second"</span><span> : (j == </span><span class="hljs-number">2</span><span> ? </span><span class="hljs-string">"third"</span><span> : (j == </span><span class="hljs-number">3</span><span> ? </span><span class="hljs-string">"fourth"</span><span> : </span><span class="hljs-string">"fifth"</span><span>)))); </span><span class="hljs-built_in">scanf</span><span>(</span><span class="hljs-string">"%d"</span><span>, &amp;numbers[j]); } </span></span></span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><span><span class="hljs-comment">// 遍历数组，检查每个数字是否为奇数，如果是奇数，则加到总和中</span><span> </span><span class="hljs-keyword">for</span><span>(j = </span><span class="hljs-number">0</span><span>; j &lt; </span><span class="hljs-number">5</span><span>; j++) { </span><span class="hljs-keyword">if</span><span>((numbers[j] % </span><span class="hljs-number">2</span><span>) != </span><span class="hljs-number">0</span><span>) { </span><span class="hljs-comment">// 检查数字是否为奇数</span><span> total += numbers[j]; </span></span></span></span></span></span></span></span></p>
+<p><span><span><span><span><span><span><span><span class="hljs-comment">// 将奇数添加到总和中</span><span> } }</span></span></span></span></span></span></span></span></p>
 <p><span><span><span><span><span><img alt="" height="419" src="./../images/練習一，給出基數，求出數字總和.png" width="800"/></span></span></span></span></span></p>
 <p><span><span><span><span><span><span>寫一個 C 程式來列印一個數字及其平方和立方體，從 1 開始列印 n 行。</span><span>接受使用者的行數（n，整數）</span></span></span></span></span></span></p>
 <p><span><span><span><span><span><span><span>測試資料：</span><br/><span><span>輸入行數：7</span></span><br/><span><span>期望輸出：</span></span><br/><span><span></span></span></span></span></span></span></span></span></p>
@@ -175,8 +198,7 @@ img.add_border {
 <p><img alt="" height="465" src="./../images/練習一，給出排數，他會每排三個數字從一開始往下.png" width="800"/></p>
 <p><span>編寫一個C 程式來取得您正在使用的C 版本。</span><br/><em><span><span>預期輸出</span></span></em></p>
 <p>我們用的是C18！</p>
-<p><img alt="" height="359" src="./../images/練習一，讓他求出我們的C++是那個版本的.png" width="800"/></p>
-<br />Exercises111 << <a href='Exercises111.html'>Previous</a> <a href='期末總結.html'>Next</a> >> 期末總結</div>
+<p><img alt="" height="359" src="./../images/練習一，讓他求出我們的C++是那個版本的.png" width="800"/></p><br />Exercises111 << <a href='Exercises111.html'>Previous</a> <a href='期末總結.html'>Next</a> >> 期末總結</div>
         
     <!-- footer -->
       <div class="container">
