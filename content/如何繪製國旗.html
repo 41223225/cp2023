@@ -142,25 +142,18 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">如何繪製國旗 << <a href='如何繪製國旗.html'>Previous</a> <br /><h1>期末總結</h1>
-<p><span>個人評分75</span></p>
-<p><span>A: 是否按照進度明確標示倉儲的改版歷程</span></p>
-<p>Q:未完成每周筆記內容，少了幾周。</p>
-<p><span>B: 是否根據<span> </span><span>IPv4 與 IPv6</span><span> </span>網路環境設定進行作法討論</span></p>
-<p>Q:是，以按照下載中的tincy、w11_a的內容修改網路</p>
-<p><span>C: 是否就<span><span> </span>Replit、s.cycu.org 與 localhost</span><span> </span>情境下對個人與分組倉儲進行設定操作</span></p>
-<p>Q:目前會使用這三種，只是s.cycu.org需要ipv6的網路設定，因此除在學校我不會使用(不會自行設定筆電的ipv6)</p>
-<p><span>D: 是否完成<a href="https://mde.tw/cpnote/content/%E4%B8%8A%E8%AA%B2%E5%85%A7%E5%AE%B9.html">上課內容</a>中的 Exercises</span></p>
-<p><span>Q:是</span></p>
-<p><span>E: 是否完成<span> </span><a href="https://mde.tw/cpnote/content/w2-w5.html">w2-w5</a><span> </span>週任務中的 Exercises111</span></p>
-<p>Q:是</p>
-<p><span>F: 是否完成<span> </span><a href="https://mde.tw/cpnote/content/w6-w7.html">w6-w7</a><span> </span>週任務中的練習一與練習二<br/></span></p>
-<p><span>Q:已完成練習一，練習二未完成</span></p>
-<p><span>G: 是否完成 C 結合 gd 繪圖程式庫, 畫出<span> </span><a href="https://en.wikipedia.org/wiki/Flag_of_China">PROC</a>(<a href="https://en.wikipedia.org/wiki/Flag_of_China#/media/File:Flag_of_China_(construction_sheet).svg">規格</a>),<span> </span><a href="https://en.wikipedia.org/wiki/Flag_of_the_United_Kingdom">United Kingdom</a>(<a href="https://en.wikipedia.org/wiki/Flag_of_the_United_Kingdom#/media/File:Flag_of_the_United_Kingdom_(1-2)_(construction_sheet).svg">規格</a>),<span> </span><a href="https://en.wikipedia.org/wiki/Flag_of_Japan">Japan</a>(<a href="https://en.wikipedia.org/wiki/Flag_of_Japan#/media/File:Construction_sheet_of_the_Japanese_flag_EN.svg">規格</a>)與<span> </span><a href="https://en.wikipedia.org/wiki/Flag_of_South_Korea">South Korea</a>(<a href="https://en.wikipedia.org/wiki/Flag_of_South_Korea#/media/File:Flag_of_South_Korea_(construction_sheet).svg">規格</a>) Flags</span></p>
-<p>Q:已畫出來</p>
-<p><span>H: 是否完成 w16 Final Project</span></p>
-<p><span>Q:已完成</span></p>
-<p></p><br />如何繪製國旗 << <a href='如何繪製國旗.html'>Previous</a> </div>
+    <div id="tipue_search_content">練習1 << <a href='練習1.html'>Previous</a> <a href='期末總結.html'>Next</a> >> 期末總結<br /><h1>如何繪製國旗</h1>
+<p>首先給予圖形們必要工具</p>
+<p>include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
+<p>繪製此檔，並以img的圖片格式匯出</p>
+<p>void draw_圖名_flag(gdImagePtr img);</p>
+<p>然後給予創建彩色圖片(將繪製圖形出圖的形式)</p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height); gdImageAlphaBlending(img, 0);</p>
+<p>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值</p>
+<p>FILE *outputFile = fopen("./../images(前面為將圖檔存在哪裡)/圖名_flag.png", "wb"); if (outputFile == NULL) { fprintf(stderr, "Error opening the output file.\n"); return 1; }</p>
+<p>此段話為將圖片輸出為img檔，而這裡的9指的是將檔案壓縮最大程度(0~9) output消除之前的file(並刷新數據)gdImageDestroy(img);同上，只是此為刷新輸出圖片</p>
+<p>return 0 如無問題便可以將此數據傳為0</p>
+<p>gdImagePngEx(img, outputFile, 9); fclose(outputFile); gdImageDestroy(img); return 0;</p><br />練習1 << <a href='練習1.html'>Previous</a> <a href='期末總結.html'>Next</a> >> 期末總結</div>
         
     <!-- footer -->
       <div class="container">
