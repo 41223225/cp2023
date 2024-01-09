@@ -396,66 +396,83 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><img alt="" height="533" src="/images/roc_flag_gd.png" width="800"/></span></span></span></span></span></span></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></span></span></p>
-<div class="line number1 index0 alt2"><code class="cpp preprocessor">#include &lt;stdio.h&gt;</code></div>
-<div class="line number2 index1 alt1"><code class="cpp preprocessor">#include &lt;gd.h&gt;</code></div>
-<div class="line number3 index2 alt2"><code class="cpp preprocessor">#include &lt;math.h&gt;</code></div>
+<div class="line number59 index58 alt2">
+<div class="line number1 index0 alt2"><code class="js preprocessor">#include &lt;stdio.h&gt;</code></div>
+<div class="line number2 index1 alt1"><code class="js preprocessor">#include &lt;gd.h&gt;</code></div>
+<div class="line number3 index2 alt2"><code class="js preprocessor">#include &lt;math.h&gt;</code></div>
 <div class="line number4 index3 alt1"> </div>
-<div class="line number5 index4 alt2"><code class="cpp keyword bold">void</code> <code class="cpp plain">draw_japan_flag(gdImagePtr img);</code></div>
-<div class="line number6 index5 alt1"><code class="cpp keyword bold">void</code> <code class="cpp plain">draw_red_sun(gdImagePtr img, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">y, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">size, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">color);</code></div>
+<div class="line number5 index4 alt2"><code class="js plain">void draw_japan_flag(gdImagePtr img);</code></div>
+<div class="line number6 index5 alt1"><code class="js plain">void draw_red_sun(gdImagePtr img, int x, int y, int size, int color);</code></div>
 <div class="line number7 index6 alt2"> </div>
-<div class="line number8 index7 alt1"><code class="cpp color1 bold">int</code> <code class="cpp plain">main() {</code></div>
-<div class="line number9 index8 alt2"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">originalWidth = 1200;</code></div>
-<div class="line number10 index9 alt1"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">originalHeight = (</code><code class="cpp color1 bold">int</code><code class="cpp plain">)(originalWidth * 2.0 / 3.0);</code></div>
-<div class="line number11 index10 alt2"><code class="cpp spaces">    </code><code class="cpp plain">gdImagePtr img = gdImageCreateTrueColor(originalWidth, originalHeight);</code></div>
-<div class="line number12 index11 alt1"><code class="cpp spaces">    </code><code class="cpp plain">gdImageAlphaBlending(img, 0);</code></div>
-<div class="line number13 index12 alt2"> </div>
-<div class="line number14 index13 alt1"><code class="cpp spaces">    </code><code class="cpp plain">draw_japan_flag(img);</code></div>
-<div class="line number15 index14 alt2"> </div>
-<div class="line number16 index15 alt1"><code class="cpp spaces">    </code><code class="cpp comments">// 新的宽度和高度以适应 "images" 文件夹</code></div>
-<div class="line number17 index16 alt2"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">newWidth = 600;</code></div>
-<div class="line number18 index17 alt1"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">newHeight = (</code><code class="cpp color1 bold">int</code><code class="cpp plain">)(newWidth * 2.0 / 3.0);</code></div>
-<div class="line number19 index18 alt2"> </div>
-<div class="line number20 index19 alt1"><code class="cpp spaces">    </code><code class="cpp comments">// 创建新图像并进行缩放</code></div>
-<div class="line number21 index20 alt2"><code class="cpp spaces">    </code><code class="cpp plain">gdImagePtr resizedImage = gdImageCreateTrueColor(newWidth, newHeight);</code></div>
-<div class="line number22 index21 alt1"><code class="cpp spaces">    </code><code class="cpp plain">gdImageAlphaBlending(resizedImage, 0);</code></div>
-<div class="line number23 index22 alt2"><code class="cpp spaces">    </code><code class="cpp plain">gdImageCopyResampled(resizedImage, img, 0, 0, 0, 0, newWidth, newHeight, originalWidth, originalHeight);</code></div>
+<div class="line number8 index7 alt1"><code class="js plain">int main() {</code></div>
+<div class="line number9 index8 alt2"><code class="js spaces">    </code><code class="js comments">// 旗幟原始寬度</code></div>
+<div class="line number10 index9 alt1"><code class="js spaces">    </code><code class="js plain">int originalWidth = 1200;</code></div>
+<div class="line number11 index10 alt2"><code class="js spaces">    </code><code class="js comments">// 旗幟原始高度</code></div>
+<div class="line number12 index11 alt1"><code class="js spaces">    </code><code class="js plain">int originalHeight = (int)(originalWidth * 2.0 / 3.0);</code></div>
+<div class="line number13 index12 alt2"><code class="js spaces">    </code> </div>
+<div class="line number14 index13 alt1"><code class="js spaces">    </code><code class="js comments">// 創建原始尺寸的圖像</code></div>
+<div class="line number15 index14 alt2"><code class="js spaces">    </code><code class="js plain">gdImagePtr img = gdImageCreateTrueColor(originalWidth, originalHeight);</code></div>
+<div class="line number16 index15 alt1"><code class="js spaces">    </code><code class="js plain">gdImageAlphaBlending(img, 0);</code></div>
+<div class="line number17 index16 alt2"> </div>
+<div class="line number18 index17 alt1"><code class="js spaces">    </code><code class="js comments">// 繪製日本國旗</code></div>
+<div class="line number19 index18 alt2"><code class="js spaces">    </code><code class="js plain">draw_japan_flag(img);</code></div>
+<div class="line number20 index19 alt1"> </div>
+<div class="line number21 index20 alt2"><code class="js spaces">    </code><code class="js comments">// 新的寬度和高度以符合 "images" 資料夾</code></div>
+<div class="line number22 index21 alt1"><code class="js spaces">    </code><code class="js plain">int newWidth = 510; </code><code class="js comments">// 新的旗幟寬度</code></div>
+<div class="line number23 index22 alt2"><code class="js spaces">    </code><code class="js plain">int newHeight = (int)(newWidth * 2.0 / 3.0); </code><code class="js comments">// 新的旗幟高度</code></div>
 <div class="line number24 index23 alt1"> </div>
-<div class="line number25 index24 alt2"><code class="cpp spaces">  </code><code class="cpp color1 bold">FILE</code> <code class="cpp plain">*outputFile = </code><code class="cpp functions bold">fopen</code><code class="cpp plain">(</code><code class="cpp string">"./../images/japan_flag.png"</code><code class="cpp plain">, </code><code class="cpp string">"wb"</code><code class="cpp plain">);</code></div>
-<div class="line number26 index25 alt1"><code class="cpp spaces">    </code><code class="cpp keyword bold">if</code> <code class="cpp plain">(outputFile == NULL) {</code></div>
-<div class="line number27 index26 alt2"><code class="cpp spaces">        </code><code class="cpp functions bold">fprintf</code><code class="cpp plain">(stderr, </code><code class="cpp string">"Error opening the output file.\n"</code><code class="cpp plain">);</code></div>
-<div class="line number28 index27 alt1"><code class="cpp spaces">        </code><code class="cpp keyword bold">return</code> <code class="cpp plain">1;</code></div>
-<div class="line number29 index28 alt2"><code class="cpp spaces">    </code><code class="cpp plain">}</code></div>
-<div class="line number30 index29 alt1"><code class="cpp spaces">    </code><code class="cpp plain">gdImagePng(resizedImage, outputFile);</code></div>
-<div class="line number31 index30 alt2"><code class="cpp spaces">    </code><code class="cpp functions bold">fclose</code><code class="cpp plain">(outputFile);</code></div>
-<div class="line number32 index31 alt1"><code class="cpp spaces">    </code><code class="cpp plain">gdImageDestroy(img);</code></div>
-<div class="line number33 index32 alt2"><code class="cpp spaces">    </code><code class="cpp plain">gdImageDestroy(resizedImage);</code></div>
-<div class="line number34 index33 alt1"> </div>
-<div class="line number35 index34 alt2"><code class="cpp spaces">    </code><code class="cpp keyword bold">return</code> <code class="cpp plain">0;</code></div>
-<div class="line number36 index35 alt1"><code class="cpp plain">}</code></div>
-<div class="line number37 index36 alt2"> </div>
-<div class="line number38 index37 alt1"><code class="cpp keyword bold">void</code> <code class="cpp plain">draw_japan_flag(gdImagePtr img) {</code></div>
-<div class="line number39 index38 alt2"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">width = gdImageSX(img);</code></div>
-<div class="line number40 index39 alt1"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">height = gdImageSY(img);</code></div>
-<div class="line number41 index40 alt2"> </div>
-<div class="line number42 index41 alt1"><code class="cpp spaces">    </code><code class="cpp comments">// 创建一个白色背景</code></div>
-<div class="line number43 index42 alt2"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">white = gdImageColorAllocate(img, 255, 255, 255);</code></div>
-<div class="line number44 index43 alt1"><code class="cpp spaces">    </code><code class="cpp plain">gdImageFilledRectangle(img, 0, 0, width - 1, height - 1, white);</code></div>
-<div class="line number45 index44 alt2"> </div>
-<div class="line number46 index45 alt1"><code class="cpp spaces">    </code><code class="cpp comments">// 绘制红色圆圈（太阳）</code></div>
-<div class="line number47 index46 alt2"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">red = gdImageColorAllocate(img, 255, 0, 0);</code></div>
-<div class="line number48 index47 alt1"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">center_x = width / 2;</code></div>
-<div class="line number49 index48 alt2"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">center_y = height / 2;</code></div>
-<div class="line number50 index49 alt1"><code class="cpp spaces">    </code><code class="cpp color1 bold">int</code> <code class="cpp plain">radius = (</code><code class="cpp color1 bold">int</code><code class="cpp plain">)((width * 2) / 3);</code></div>
-<div class="line number51 index50 alt2"><code class="cpp spaces">    </code><code class="cpp plain">draw_red_sun(img, center_x, center_y, radius, red);</code></div>
-<div class="line number52 index51 alt1"><code class="cpp plain">}</code></div>
-<div class="line number53 index52 alt2"> </div>
-<div class="line number54 index53 alt1"><code class="cpp keyword bold">void</code> <code class="cpp plain">draw_red_sun(gdImagePtr img, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">x, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">y, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">size, </code><code class="cpp color1 bold">int</code> <code class="cpp plain">color) {</code></div>
-<div class="line number55 index54 alt2"><code class="cpp spaces">  </code><code class="cpp comments">// 減小 size 的值,例如將他的值減半</code></div>
-<div class="line number56 index55 alt1"><code class="cpp spaces">  </code><code class="cpp plain">size = size / 2;</code></div>
-<div class="line number57 index56 alt2"><code class="cpp spaces">    </code><code class="cpp plain">gdImageArc(img, x, y, size, size, 0, 360, color);</code></div>
-<div class="line number58 index57 alt1"><code class="cpp spaces">    </code><code class="cpp plain">gdImageFillToBorder(img, x, y, color, color);</code></div>
-<div class="line number59 index58 alt2"><code class="cpp plain">}</code></div>
-<div class="line number59 index58 alt2"><code class="cpp plain"><img alt="" height="533" src="/images/japan_flag.png" width="800"/></code></div>
+<div class="line number25 index24 alt2"><code class="js spaces">    </code><code class="js comments">// 創建新尺寸的圖像並進行縮放</code></div>
+<div class="line number26 index25 alt1"><code class="js spaces">    </code><code class="js plain">gdImagePtr resizedImage = gdImageCreateTrueColor(newWidth, newHeight);</code></div>
+<div class="line number27 index26 alt2"><code class="js spaces">    </code><code class="js plain">gdImageAlphaBlending(resizedImage, 0);</code></div>
+<div class="line number28 index27 alt1"><code class="js spaces">    </code><code class="js plain">gdImageCopyResampled(resizedImage, img, 0, 0, 0, 0, newWidth, newHeight, originalWidth, originalHeight);</code></div>
+<div class="line number29 index28 alt2"> </div>
+<div class="line number30 index29 alt1"><code class="js spaces">    </code><code class="js comments">// 開啟輸出檔案</code></div>
+<div class="line number31 index30 alt2"><code class="js spaces">    </code><code class="js plain">FILE *outputFile = fopen(</code><code class="js string">"./../images/japan_flag.png"</code><code class="js plain">, </code><code class="js string">"wb"</code><code class="js plain">);</code></div>
+<div class="line number32 index31 alt1"><code class="js spaces">    </code><code class="js keyword">if</code> <code class="js plain">(outputFile == NULL) {</code></div>
+<div class="line number33 index32 alt2"><code class="js spaces">        </code><code class="js plain">fprintf(stderr, </code><code class="js string">"Error opening the output file.\n"</code><code class="js plain">);</code></div>
+<div class="line number34 index33 alt1"><code class="js spaces">        </code><code class="js keyword">return</code> <code class="js plain">1;</code></div>
+<div class="line number35 index34 alt2"><code class="js spaces">    </code><code class="js plain">}</code></div>
+<div class="line number36 index35 alt1"> </div>
+<div class="line number37 index36 alt2"><code class="js spaces">    </code><code class="js comments">// 將新尺寸的圖像寫入檔案</code></div>
+<div class="line number38 index37 alt1"><code class="js spaces">    </code><code class="js plain">gdImagePng(resizedImage, outputFile);</code></div>
+<div class="line number39 index38 alt2"><code class="js spaces">    </code><code class="js plain">fclose(outputFile);</code></div>
+<div class="line number40 index39 alt1"> </div>
+<div class="line number41 index40 alt2"><code class="js spaces">    </code><code class="js comments">// 釋放記憶體</code></div>
+<div class="line number42 index41 alt1"><code class="js spaces">    </code><code class="js plain">gdImageDestroy(img);</code></div>
+<div class="line number43 index42 alt2"><code class="js spaces">    </code><code class="js plain">gdImageDestroy(resizedImage);</code></div>
+<div class="line number44 index43 alt1"> </div>
+<div class="line number45 index44 alt2"><code class="js spaces">    </code><code class="js keyword">return</code> <code class="js plain">0;</code></div>
+<div class="line number46 index45 alt1"><code class="js plain">}</code></div>
+<div class="line number47 index46 alt2"> </div>
+<div class="line number48 index47 alt1"><code class="js plain">void draw_japan_flag(gdImagePtr img) {</code></div>
+<div class="line number49 index48 alt2"><code class="js spaces">    </code><code class="js plain">int width = gdImageSX(img);</code></div>
+<div class="line number50 index49 alt1"><code class="js spaces">    </code><code class="js plain">int height = gdImageSY(img);</code></div>
+<div class="line number51 index50 alt2"> </div>
+<div class="line number52 index51 alt1"><code class="js spaces">    </code><code class="js comments">// 創建一個白色背景</code></div>
+<div class="line number53 index52 alt2"><code class="js spaces">    </code><code class="js plain">int white = gdImageColorAllocate(img, 255, 255, 255);</code></div>
+<div class="line number54 index53 alt1"><code class="js spaces">    </code><code class="js plain">gdImageFilledRectangle(img, 0, 0, width - 1, height - 1, white);</code></div>
+<div class="line number55 index54 alt2"> </div>
+<div class="line number56 index55 alt1"><code class="js spaces">    </code><code class="js comments">// 繪製紅色圓圈（太陽）</code></div>
+<div class="line number57 index56 alt2"><code class="js spaces">    </code><code class="js plain">int red = gdImageColorAllocate(img, 255, 0, 0);</code></div>
+<div class="line number58 index57 alt1"><code class="js spaces">    </code><code class="js plain">int center_x = width / 2;</code></div>
+<div class="line number59 index58 alt2"><code class="js spaces">    </code><code class="js plain">int center_y = height / 2;</code></div>
+<div class="line number60 index59 alt1"><code class="js spaces">    </code><code class="js plain">int radius = (int)((width * 2) / 3);</code></div>
+<div class="line number61 index60 alt2"><code class="js spaces">    </code><code class="js plain">draw_red_sun(img, center_x, center_y, radius, red);</code></div>
+<div class="line number62 index61 alt1"><code class="js plain">}</code></div>
+<div class="line number63 index62 alt2"> </div>
+<div class="line number64 index63 alt1"><code class="js plain">void draw_red_sun(gdImagePtr img, int x, int y, int size, int color) {</code></div>
+<div class="line number65 index64 alt2"><code class="js spaces">    </code><code class="js comments">// 減小 size 的值，例如將其值減半</code></div>
+<div class="line number66 index65 alt1"><code class="js spaces">    </code><code class="js plain">size = size / 2;</code></div>
+<div class="line number67 index66 alt2"><code class="js spaces">    </code><code class="js plain">gdImageArc(img, x, y, size, size, 0, 360, color);</code></div>
+<div class="line number68 index67 alt1"><code class="js spaces">    </code><code class="js plain">gdImageFillToBorder(img, x, y, color, color);</code></div>
+<div class="line number69 index68 alt2"><code class="js plain">}</code></div>
+<div class="line number69 index68 alt2">
+<p>clear</p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cd downloads</span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_roc_flag.c-lgd-lm</span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
+</div>
+<code class="cpp plain"><img alt="" height="533" src="/images/japan_flag.png" width="800"/></code></div>
 <div class="line number59 index58 alt2">
 <div class="line number1 index0 alt2"><code class="js preprocessor">#include &lt;stdio.h&gt;</code></div>
 <div class="line number2 index1 alt1"><code class="js preprocessor">#include &lt;gd.h&gt;</code></div>
@@ -540,6 +557,12 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number81 index80 alt2"><code class="js spaces">    </code><code class="js comments">// 使用 gdImageFilledPolygon 繪製星形</code></div>
 <div class="line number82 index81 alt1"><code class="js spaces">    </code><code class="js plain">gdImageFilledPolygon(img, points, 10, color);</code></div>
 <div class="line number83 index82 alt2"><code class="js plain">}</code></div>
+<div class="line number83 index82 alt2">
+<p>clear</p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cd downloads</span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_roc_flag.c-lgd-lm</span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
+</div>
 <div class="line number83 index82 alt2"><code class="js plain"><img alt="" height="200" src="/images/china_flag.png" width="300"/></code></div>
 <div class="line number83 index82 alt2">
 <div class="syntaxhighlighter html" id="highlighter_658036">
@@ -901,13 +924,23 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number356 index355 alt1"><code class="csharp spaces">      </code><code class="csharp plain">fclose(outputFile);</code></div>
 <div class="line number357 index356 alt2"><code class="csharp spaces">      </code><code class="csharp plain">gdImageDestroy(im);</code></div>
 <div class="line number358 index357 alt1"><code class="csharp spaces">      </code><code class="csharp keyword">return</code> <code class="csharp plain">0;</code></div>
-<div class="line number359 index358 alt2"><code class="csharp spaces">  </code><code class="csharp plain">}</code></div>
+<div class="line number359 index358 alt2"><code class="csharp spaces">  </code><code class="csharp plain"><code class="csharp plain">}</code></code>
+<p>clear</p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cd downloads</span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_roc_flag.c-lgd-lm</span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
+</div>
 <div class="line number359 index358 alt2"><img alt="" height="267" src="/images/korea_flag.png" width="400"/></div>
 </div>
 </div>
 <div class="line number83 index82 alt2">
 <div>
-<div class="syntaxhighlighter html" id="highlighter_658036">#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;<br/> <br/>void draw_uk_flag(gdImagePtr img);<br/>void fillTriangle(gdImagePtr img, int x1, int y1, int x2, int y2, int x3, int y3, int color);<br/> <br/>int main() {<br/>    // 设置国旗的宽和高<br/>    int width = 1200;<br/>    int height = width / 2;<br/> <br/>    // 创建图像<br/>    gdImagePtr img = gdImageCreateTrueColor(width, height);<br/>    gdImageAlphaBlending(img, 0);<br/> <br/>    // 绘制英国国旗<br/>    draw_uk_flag(img);<br/> <br/>    // 将图像保存到文件<br/>    FILE *outputFile = fopen("./../images/uk_flag.png", "wb");<br/>    if (outputFile == NULL) {<br/>        fprintf(stderr, "打开输出文件时发生错误。\n");<br/>        return 1;<br/>    }<br/>    gdImagePngEx(img, outputFile, 9);<br/>    fclose(outputFile);<br/>    gdImageDestroy(img);<br/>    return 0;<br/>}<br/> <br/> <br/> <br/>void draw_uk_flag(gdImagePtr img) {<br/>    int width = gdImageSX(img);<br/>    int height = gdImageSY(img);<br/> <br/>    int red, white, blue;<br/>    red = gdImageColorAllocate(img, 204, 0, 0);       // 红色<br/>    white = gdImageColorAllocate(img, 255, 255, 255); // 白色<br/>    blue = gdImageColorAllocate(img, 0, 0, 153);      // 蓝色<br/> <br/>    gdImageFilledRectangle(img, 0, 0, width, height, blue);<br/> <br/> <br/>  int x1, y1, x2, y2, x3, y3;<br/>  {<br/>    int line_thickness = 100;<br/>    gdImageSetThickness(img, line_thickness);<br/> <br/>    int x1, y1, x2, y2, x3, y3;<br/> <br/>    // 绘制白色斜线<br/>    x1 = 0;<br/>    y1 = 600;<br/>    x2 = 1200;<br/>    y2 = 0;<br/>    gdImageLine(img, x1, y1, x2, y2, white);<br/> <br/>    x1 = 0;<br/>    y1 = 0;<br/>    x2 = 1200;<br/>    y2 = 600;<br/>    gdImageLine(img, x1, y1, x2, y2, white);<br/>}<br/>  {<br/>    int line_thickness = 33;<br/>    gdImageSetThickness(img, line_thickness);<br/> <br/> <br/>    // 绘制红色斜线<br/>    x1 = 566;<br/>    y1 = 300;<br/>    x2 = 1166;<br/>    y2 = 0;<br/>    gdImageLine(img, x1, y1, x2, y2, red);<br/> <br/>    x1 = 1233;<br/>    y1 = 600;<br/>    x2 = 633;<br/>    y2 = 300;<br/>    gdImageLine(img, x1, y1, x2, y2, red);<br/> <br/>    x1 = 566;<br/>    y1 = 300;<br/>    x2 = -33;<br/>    y2 = 0;<br/>    gdImageLine(img, x1, y1, x2, y2, red);<br/> <br/>    x1 = 600;<br/>    y1 = 316.5;<br/>    x2 = 0;<br/>    y2 = 616.5;<br/>    gdImageLine(img, x1, y1, x2, y2, red);<br/>  }<br/>  {<br/>  int line_thickness = 33;<br/>  gdImageSetThickness(img, line_thickness);<br/> <br/>  int x1, y1, x2, y2, x3, y3;<br/> <br/>  // 绘制  斜线<br/>  x1 = 0;<br/>  y1 = 600;<br/>  x2 = 1200;<br/>  y2 = 0;<br/>  gdImageLine(img, x1, y1, x2, y2, red );<br/> <br/> <br/>  x1 = 1200;<br/>    y1 = 16.5;<br/>    x2 = 600;<br/>    y2 = 316.5;<br/>    gdImageLine(img, x1, y1, x2, y2, white);<br/> <br/> <br/>  x1 = 0;<br/>    y1 = 583.5;<br/>    x2 = 600;<br/>    y2 = 283.5;<br/>    gdImageLine(img, x1, y1, x2, y2, white);<br/> <br/> <br/>  }<br/> <br/>    // 绘制白色十字<br/>    int cross_width = width / 32;<br/>    int cross_arm_width = width / 32;<br/>    int center_x = width / 2;<br/>    int center_y = height / 2;<br/> <br/>    gdImageFilledRectangle(img, center_x + 2.7 * cross_width, 0, center_x - 2.7 * cross_width, height, white);<br/>    gdImageFilledRectangle(img, 0, center_y + 2.7 * cross_arm_width, width, center_y - 2.7 * cross_arm_width, white);<br/> <br/>    // 绘制红色十字<br/>    gdImageFilledRectangle(img, center_x + 1.5 * cross_width, 0, center_x - 1.5 * cross_width, height, red);<br/>    gdImageFilledRectangle(img, 0, center_y + 1.5 * cross_arm_width, width, center_y - 1.5 * cross_arm_width, red);<br/>}</div>
+<div class="syntaxhighlighter html" id="highlighter_658036">#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;<br/> <br/>void draw_uk_flag(gdImagePtr img);<br/>void fillTriangle(gdImagePtr img, int x1, int y1, int x2, int y2, int x3, int y3, int color);<br/> <br/>int main() {<br/>    // 设置国旗的宽和高<br/>    int width = 1200;<br/>    int height = width / 2;<br/> <br/>    // 创建图像<br/>    gdImagePtr img = gdImageCreateTrueColor(width, height);<br/>    gdImageAlphaBlending(img, 0);<br/> <br/>    // 绘制英国国旗<br/>    draw_uk_flag(img);<br/> <br/>    // 将图像保存到文件<br/>    FILE *outputFile = fopen("./../images/uk_flag.png", "wb");<br/>    if (outputFile == NULL) {<br/>        fprintf(stderr, "打开输出文件时发生错误。\n");<br/>        return 1;<br/>    }<br/>    gdImagePngEx(img, outputFile, 9);<br/>    fclose(outputFile);<br/>    gdImageDestroy(img);<br/>    return 0;<br/>}<br/> <br/> <br/> <br/>void draw_uk_flag(gdImagePtr img) {<br/>    int width = gdImageSX(img);<br/>    int height = gdImageSY(img);<br/> <br/>    int red, white, blue;<br/>    red = gdImageColorAllocate(img, 204, 0, 0);       // 红色<br/>    white = gdImageColorAllocate(img, 255, 255, 255); // 白色<br/>    blue = gdImageColorAllocate(img, 0, 0, 153);      // 蓝色<br/> <br/>    gdImageFilledRectangle(img, 0, 0, width, height, blue);<br/> <br/> <br/>  int x1, y1, x2, y2, x3, y3;<br/>  {<br/>    int line_thickness = 100;<br/>    gdImageSetThickness(img, line_thickness);<br/> <br/>    int x1, y1, x2, y2, x3, y3;<br/> <br/>    // 绘制白色斜线<br/>    x1 = 0;<br/>    y1 = 600;<br/>    x2 = 1200;<br/>    y2 = 0;<br/>    gdImageLine(img, x1, y1, x2, y2, white);<br/> <br/>    x1 = 0;<br/>    y1 = 0;<br/>    x2 = 1200;<br/>    y2 = 600;<br/>    gdImageLine(img, x1, y1, x2, y2, white);<br/>}<br/>  {<br/>    int line_thickness = 33;<br/>    gdImageSetThickness(img, line_thickness);<br/> <br/> <br/>    // 绘制红色斜线<br/>    x1 = 566;<br/>    y1 = 300;<br/>    x2 = 1166;<br/>    y2 = 0;<br/>    gdImageLine(img, x1, y1, x2, y2, red);<br/> <br/>    x1 = 1233;<br/>    y1 = 600;<br/>    x2 = 633;<br/>    y2 = 300;<br/>    gdImageLine(img, x1, y1, x2, y2, red);<br/> <br/>    x1 = 566;<br/>    y1 = 300;<br/>    x2 = -33;<br/>    y2 = 0;<br/>    gdImageLine(img, x1, y1, x2, y2, red);<br/> <br/>    x1 = 600;<br/>    y1 = 316.5;<br/>    x2 = 0;<br/>    y2 = 616.5;<br/>    gdImageLine(img, x1, y1, x2, y2, red);<br/>  }<br/>  {<br/>  int line_thickness = 33;<br/>  gdImageSetThickness(img, line_thickness);<br/> <br/>  int x1, y1, x2, y2, x3, y3;<br/> <br/>  // 绘制  斜线<br/>  x1 = 0;<br/>  y1 = 600;<br/>  x2 = 1200;<br/>  y2 = 0;<br/>  gdImageLine(img, x1, y1, x2, y2, red );<br/> <br/> <br/>  x1 = 1200;<br/>    y1 = 16.5;<br/>    x2 = 600;<br/>    y2 = 316.5;<br/>    gdImageLine(img, x1, y1, x2, y2, white);<br/> <br/> <br/>  x1 = 0;<br/>    y1 = 583.5;<br/>    x2 = 600;<br/>    y2 = 283.5;<br/>    gdImageLine(img, x1, y1, x2, y2, white);<br/> <br/> <br/>  }<br/> <br/>    // 绘制白色十字<br/>    int cross_width = width / 32;<br/>    int cross_arm_width = width / 32;<br/>    int center_x = width / 2;<br/>    int center_y = height / 2;<br/> <br/>    gdImageFilledRectangle(img, center_x + 2.7 * cross_width, 0, center_x - 2.7 * cross_width, height, white);<br/>    gdImageFilledRectangle(img, 0, center_y + 2.7 * cross_arm_width, width, center_y - 2.7 * cross_arm_width, white);<br/> <br/>    // 绘制红色十字<br/>    gdImageFilledRectangle(img, center_x + 1.5 * cross_width, 0, center_x - 1.5 * cross_width, height, red);<br/>    gdImageFilledRectangle(img, 0, center_y + 1.5 * cross_arm_width, width, center_y - 1.5 * cross_arm_width, red);<br/>}
+<p>clear</p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cd downloads</span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_roc_flag.c-lgd-lm</span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
+</div>
 <div class="syntaxhighlighter html"><img alt="" height="200" src="/images/英國國旗.png" width="400"/></div>
 </div>
 </div>
@@ -1087,7 +1120,14 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p><span>編寫一個C 程式來取得您正在使用的C 版本。</span><br/><em><span><span>預期輸出</span></span></em></p>
 <p>我們用的是C18！</p>
 <p><img alt="" height="359" src="/images/練習一，讓他求出我們的C++是那個版本的.png" width="800"/></p>
-<h1>期末總結</h1>
+<h1>如何繪製國旗</h1>
+<p>首先給予圖形們必要工具</p>
+<p>include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
+<p>繪製此檔，並以img的圖片格式匯出</p>
+<p>void draw_圖名_flag(gdImagePtr img);</p>
+<p>然後給予創建彩色圖片(將繪製圖形出圖的形式)</p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height); gdImageAlphaBlending(img, 0);</p>
+<p>FILE *outputFile = fopen("france_flag.png", "wb"); if (outputFile == NULL) { fprintf(stderr, "Error opening the output file.\n"); return 1; }</p><h1>期末總結</h1>
 <p><span>個人評分75</span></p>
 <p><span>A: 是否按照進度明確標示倉儲的改版歷程</span></p>
 <p>Q:未完成每周筆記內容，少了幾周。</p>

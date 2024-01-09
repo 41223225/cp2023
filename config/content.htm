@@ -944,7 +944,8 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="syntaxhighlighter html"><img alt="" height="200" src="/images/英國國旗.png" width="400"/></div>
 </div>
 </div>
-</div><h1>W8-w9</h1>
+</div>
+<h1>W8-w9</h1>
 <p>分組</p>
 <h1>w12</h1>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">{ pkgs }: { </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">deps = [ </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.llvmPackages_rocm.clang </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.gd </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.gnuplot </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">]; </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">}</span></span></span></span></span></span></p>
@@ -1119,7 +1120,18 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p><span>編寫一個C 程式來取得您正在使用的C 版本。</span><br/><em><span><span>預期輸出</span></span></em></p>
 <p>我們用的是C18！</p>
 <p><img alt="" height="359" src="/images/練習一，讓他求出我們的C++是那個版本的.png" width="800"/></p>
-<h1>期末總結</h1>
+<h1>如何繪製國旗</h1>
+<p>首先給予圖形們必要工具</p>
+<p>include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
+<p>繪製此檔，並以img的圖片格式匯出</p>
+<p>void draw_圖名_flag(gdImagePtr img);</p>
+<p>然後給予創建彩色圖片(將繪製圖形出圖的形式)</p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height); gdImageAlphaBlending(img, 0);</p>
+<p>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值</p>
+<p>FILE *outputFile = fopen("./../images(前面為將圖檔存在哪裡)/圖名_flag.png", "wb"); if (outputFile == NULL) { fprintf(stderr, "Error opening the output file.\n"); return 1; }</p>
+<p>此段話為將圖片輸出為img檔，而這裡的9指的是將檔案壓縮最大程度(0~9) output消除之前的file(並刷新數據)gdImageDestroy(img);同上，只是此為刷新輸出圖片</p>
+<p>return 0 如無問題便可以將此數據傳為0</p>
+<p>gdImagePngEx(img, outputFile, 9); fclose(outputFile); gdImageDestroy(img); return 0;</p><h1>期末總結</h1>
 <p><span>個人評分75</span></p>
 <p><span>A: 是否按照進度明確標示倉儲的改版歷程</span></p>
 <p>Q:未完成每周筆記內容，少了幾周。</p>
