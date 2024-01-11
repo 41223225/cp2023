@@ -346,17 +346,19 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gnuplot_ex1_c</span></span></span></span></span></span></p>
 <p>./a.out<img alt="" height="400" src="/images/gnuplot_ex1.png" width="800"/></p>
 <h1>w6</h1>
-<p>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
-<p>void draw_usa_flag(gdImagePtr img);<br/>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);</p>
-<p>int main() {<br/> int width = 800;<br/> int height = (int)(width / 1.9);</p>
-<p>gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);</p>
-<p>draw_usa_flag(img);</p>
-<p>FILE *outputFile = fopen("./../images/usa_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "打开输出文件时出错。\n");<br/> return 1;<br/> }</p>
+<p>#include &lt;stdio.h&gt;//<span>用於輸入和輸出的函數</span><span> (列印文字等等)</span><br/>#include &lt;gd.h&gt;//<span>繪圖工具</span><br/>#include &lt;math.h&gt;//<span>計算工具</span></p>
+<p>void draw_usa_flag(gdImagePtr img);//<span>繪製此檔，並以img的圖片格式匯出</span><br/>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);//繪製星星</p>
+<p>int main() {<br/> int width = 800;<br/> int height = (int)(width / 1.9);//給予<span>國旗邊框</span></p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height);//<span>然後給予創建彩色圖片，圖框如上述</span><br/> gdImageAlphaBlending(img, 0);//<span>不</span><span>允許圖像中的像素是透明或半透明(0為不允許1為允許)而此還擁有一功能，便是可用RAD:紅，綠，藍  顏色亮度，最高亮度為255</span></p>
+<p>draw_usa_flag(img);//開始繪製美國國旗</p>
+<p>FILE *outputFile = fopen("./../images/usa_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "打开输出文件时出错。\n");<br/> return 1;<br/> }//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span></p>
 <p>gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);</p>
-<p>return 0;<br/>}</p>
-<p>void draw_usa_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;<br/> // 国旗颜色<br/> red = gdImageColorAllocate(img, 178, 34, 52); // 红色条纹<br/> white = gdImageColorAllocate(img, 255, 255, 255); // 白色条纹<br/> blue = gdImageColorAllocate(img, 60, 59, 110); // 蓝色矩形</p>
+<p>return 0;<br/>}//此段話為將圖片輸出為img檔，而這裡的9指的是將檔案壓縮最大程度(0~9) output消除之前的file(並刷新數據)gdImageDestroy(img);同上功能，只是此為刷新輸出圖片</p>
+<p>//return 0 會將這個整數的數值傳回給作業系統, 在這個程式結束成功結束後</p>
+<p>void draw_usa_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;//開始繪製美國國旗，並給予外框、需另外加入的工具</p>
+<p>// <br/> red = gdImageColorAllocate(img, 178, 34, 52); // 红色条纹<br/> white = gdImageColorAllocate(img, 255, 255, 255); // 白色条纹<br/> blue = gdImageColorAllocate(img, 60, 59, 110); // 蓝色矩形</p>
 <p>int stripe_height = height / 13;<br/> int stripe_width = width;<br/> int star_size = (int)(0.0308 * height); // 星星大小</p>
-<p>for (int y = 0; y &lt; height; y += stripe_height) {<br/> if (y / stripe_height % 2 == 0) {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, red);<br/> } else {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, white);<br/> }<br/> }</p>
+<p>for (int y = 0; y &lt; height; y += stripe_height) {<br/> if (y / stripe_height % 2 == 0) {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, red);<br/> } else {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, white);<br/> }<br/> }//這段話表示在此功能中我們將會利用</p>
 <p>gdImageFilledRectangle(img, 0, 0, width * 2 / 5, stripe_height * 7, blue);</p>
 <p>int star_spacing_x = (int)(0.129 * height); // 横向星星之间的间距<br/> int star_spacing_y = (int)(0.054 * height); // 纵向星星之间的间距<br/> int star_start_x = (int)(0.125 * height); // 星星的起始X位置<br/> int star_start_y = (int)(0.0485 * height); // 星星的起始Y位置</p>
 <p>for (int row = 0; row &lt; 9; row++) {<br/> int starsPerRow = (row % 2 == 0) ? 6 : 5;</p>
@@ -370,7 +372,7 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></span></span>clear</p>
 <p>cd downloads</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_usa_flag.c - lgd- lm</span></span></span></span></span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span mce-data-marked="1" style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
 <p><img alt="" height="211" src="/images/usa_flag.png" width="400"/></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></span></span></p>
 <div class="line number1 index0 alt2"><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">參照維基百科上面的台灣國旗</code></div>
@@ -1278,7 +1280,7 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p>1首先給予圖形們必要工具</p>
 <p></p>
 <p></p>
-<p>include &lt;stdio.h&gt;  <br/>#include &lt;gd.h&gt;  繪圖工具<br/>#include &lt;math.h&gt;  計算工具</p>
+<p>#include &lt;stdio.h&gt;<span>用於輸入和輸出的函數</span><span> (列印文字等等)</span>  <br/>#include &lt;gd.h&gt;  繪圖工具<br/>#include &lt;math.h&gt;  計算工具</p>
 <p>繪製此檔，並以img的圖片格式匯出</p>
 <p>void draw_圖名_flag(<span>gdImagePtr</span> img);</p>
 <div class="line number6 index5 alt1"><code class="js plain">記住必須先給予圖形的最外框才能創建圖片(可選擇給予數字或者比例)</code></div>
@@ -1310,8 +1312,7 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number39 index38 alt2"><code class="js spaces">    </code><code class="js plain">int red = gdImageColorAllocate(img, 255, 0, 0);</code></div>
 <div class="line number39 index38 alt2"><span face="monospace" style="font-family: monospace;">    </span></div>
 <div class="line number40 index39 alt1"> </div>
-<p><span></span></p>
-<h1>期末總結</h1>
+<p><span></span></p><h1>期末總結</h1>
 <p><span>個人評分75</span></p>
 <p><span>A: 是否按照進度明確標示倉儲的改版歷程</span></p>
 <p>Q:未完成每周筆記內容，少了幾周。</p>
