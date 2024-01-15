@@ -536,15 +536,14 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number61 index60 alt2"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth = 23;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number62 index61 alt1"> </div>
 <div class="line number63 index62 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number64 index63 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number65 index64 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);</code></div>
-<div class="line number66 index65 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number67 index66 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number68 index67 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -35, startY -10, endX -35, endY -10, black);</code></div>
-<div class="line number69 index68 alt2"> </div>
+<div class="line number64 index63 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number65 index64 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);//將圖片中將線條的起點終點連接起來並且上黑色</code></div>
+<div class="line number65 index64 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
+<div class="line number67 index66 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number68 index67 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -35, startY -10, endX -35, endY -10, black);//<span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別減少了35單位，垂直方向減少了10單位</span></code></div>
 <div class="line number70 index69 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number71 index70 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number72 index71 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -70, startY -20, endX -70, endY -20, black);</code></div>
+<div class="line number71 index70 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number72 index71 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -70, startY -20, endX -70, endY -20, black);//<span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別減少了35單位，垂直方向減少了10單位</span></code></div>
 <div class="line number73 index72 alt2"> </div>
 <div class="line number74 index73 alt1"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">startX2 = 213;   </code></div>
 <div class="line number75 index74 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 線的起點 X 座標</code></div>
@@ -561,20 +560,20 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number86 index85 alt1"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth2 = 25;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number87 index86 alt2"> </div>
 <div class="line number88 index87 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number89 index88 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number90 index89 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX2 +3, startY2, endX2 +3, endY2, white);</code></div>
+<div class="line number89 index88 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);//載入上述的線的寬度</code></div>
+<div class="line number90 index89 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX2 +3, startY2, endX2 +3, endY2, white);<span>//將圖片中將線條的起點終點連接起來並且上白色</span></code></div>
 <div class="line number91 index90 alt2"> </div>
-<div class="line number92 index91 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);</code></div>
-<div class="line number93 index92 alt2"><code class="csharp plain">gdImageLine(im, startX2 -17, startY2 +9 , endX2 -17, endY2 +9 , white);</code></div>
+<div class="line number92 index91 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);<span>//將圖片中載入上述的線的寬度並增加10單位</span></code></div>
+<div class="line number93 index92 alt2"><code class="csharp plain">gdImageLine(im, startX2 -17, startY2 +9 , endX2 -17, endY2 +9 , white);<span>//將圖片中將線條的起點終點連接起來並且上白色，再<span>將原本的起點及終點水平方向分別減少了17單位，垂直方向增加9單位</span></span></code></div>
 <div class="line number94 index93 alt1"> </div>
-<div class="line number95 index94 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth );</code></div>
-<div class="line number96 index95 alt1"><code class="csharp plain">gdImageLine(im, startX2 +115, startY2 -145, endX2 +115, endY2 -145, white);</code></div>
+<div class="line number95 index94 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth );<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number96 index95 alt1"><code class="csharp plain">gdImageLine(im, startX2 +115, startY2 -145, endX2 +115, endY2 -145, white);//<span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加115單位，垂直方向減少145單位</span></code></div>
 <div class="line number97 index96 alt2"> </div>
-<div class="line number98 index97 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number99 index98 alt2"><code class="csharp plain">gdImageLine(im, startX2 +120, startY2 -155, endX2 +120, endY2 -155, white);</code></div>
+<div class="line number98 index97 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number99 index98 alt2"><code class="csharp plain">gdImageLine(im, startX2 +120, startY2 -155, endX2 +120, endY2 -155, white);//<span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加120單位，垂直方向減少155單位</span></code></div>
 <div class="line number100 index99 alt1"> </div>
-<div class="line number101 index100 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +12);</code></div>
-<div class="line number102 index101 alt1"><code class="csharp plain">gdImageLine(im, startX2 +145, startY2 -155, endX2 +145, endY2 -155, white);</code></div>
+<div class="line number101 index100 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +12);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number102 index101 alt1"><code class="csharp plain">gdImageLine(im, startX2 +145, startY2 -155, endX2 +145, endY2 -155, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加145單位，垂直方向減少155單位</span></code></div>
 <div class="line number103 index102 alt2"><code class="csharp plain">}</code></div>
 <div class="line number104 index103 alt1"><code class="csharp spaces">  </code><code class="csharp plain">{</code></div>
 <div class="line number105 index104 alt2"><code class="csharp spaces">    </code><code class="csharp comments">// 起點和終點位置</code></div>
@@ -594,15 +593,14 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number119 index118 alt2"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth = 23;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number120 index119 alt1"> </div>
 <div class="line number121 index120 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number122 index121 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number123 index122 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);</code></div>
+<div class="line number122 index121 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number123 index122 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);<span>//<span>將圖片中將線條的起點終點連接起來並且上黑色</span></span></code></div>
 <div class="line number124 index123 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number125 index124 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number126 index125 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -35, startY +10, endX -35, endY +10, black);</code></div>
-<div class="line number127 index126 alt2"> </div>
+<div class="line number125 index124 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number126 index125 alt1"><code class="csharp spaces">  </code><code class="csharp plain"><code class="csharp plain">gdImageLine(im, startX -35, startY +10, endX -35, endY +10, black);//<span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別減少了35單位，垂直方向增加了10單位</span></code></code></div>
 <div class="line number128 index127 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number129 index128 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number130 index129 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -70, startY +20, endX -70, endY +20, black);</code></div>
+<div class="line number129 index128 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number130 index129 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -70, startY +20, endX -70, endY +20, black);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別減少了70單位，垂直方向增加了20單位</span></code></div>
 <div class="line number131 index130 alt2"> </div>
 <div class="line number132 index131 alt1"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">startX2 = 213;   </code></div>
 <div class="line number133 index132 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 線的起點 X 座標</code></div>
@@ -619,23 +617,22 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number144 index143 alt1"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth2 = 25;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number145 index144 alt2"> </div>
 <div class="line number146 index145 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number147 index146 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +8);</code></div>
-<div class="line number148 index147 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX2 -11, startY2, endX2 -11, endY2, white);</code></div>
+<div class="line number147 index146 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +8);<span>//將圖片中載入上述的線的寬度並增加8單位</span></code></div>
+<div class="line number148 index147 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX2 -11, startY2, endX2 -11, endY2, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向減少11單位。</span></code></div>
 <div class="line number149 index148 alt2"> </div>
-<div class="line number150 index149 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);</code></div>
-<div class="line number151 index150 alt2"><code class="csharp plain">gdImageLine(im, startX2 -30, startY2 -9 , endX2 -30, endY2 -9 , white);</code></div>
-<div class="line number152 index151 alt1"> </div>
-<div class="line number153 index152 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth );</code></div>
-<div class="line number154 index153 alt1"><code class="csharp plain">gdImageLine(im, startX2 +100, startY2 +150, endX2 +100, endY2 +150, white);</code></div>
+<div class="line number150 index149 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);<span>//將圖片中載入上述的線的寬度並增加10單位</span></code></div>
+<div class="line number151 index150 alt2"><code class="csharp plain">gdImageLine(im, startX2 -30, startY2 -9 , endX2 -30, endY2 -9 , white);</code><span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別減少單位，垂直方向減少9單位</span></div>
+<div class="line number153 index152 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth );<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number154 index153 alt1"><code class="csharp plain">gdImageLine(im, startX2 +100, startY2 +150, endX2 +100, endY2 +150, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加100單位，垂直方向增加150單位</span></code></div>
 <div class="line number155 index154 alt2"> </div>
-<div class="line number156 index155 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number157 index156 alt2"><code class="csharp plain">gdImageLine(im, startX2 +120, startY2 +155, endX2 +120, endY2 +155, white);</code></div>
+<div class="line number156 index155 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number157 index156 alt2"><code class="csharp plain">gdImageLine(im, startX2 +120, startY2 +155, endX2 +120, endY2 +155, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加120單位，垂直方向增加155單位</span></code></div>
 <div class="line number158 index157 alt1"> </div>
-<div class="line number159 index158 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +14);</code></div>
-<div class="line number160 index159 alt1"><code class="csharp plain">gdImageLine(im, startX2 +145, startY2 +157, endX2 +145, endY2 +157, white);</code></div>
+<div class="line number159 index158 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +14);<span>//將圖片中載入上述的線的寬度並增加14單位</span></code></div>
+<div class="line number160 index159 alt1"><code class="csharp plain">gdImageLine(im, startX2 +145, startY2 +157, endX2 +145, endY2 +157, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加145單位，垂直方向增加157單位</span></code></div>
 <div class="line number161 index160 alt2"> </div>
-<div class="line number162 index161 alt1"><code class="csharp spaces">    </code><code class="csharp plain">gdImageSetThickness(im, lineWidth -10);</code></div>
-<div class="line number163 index162 alt2"><code class="csharp plain">gdImageLine(im, 232, 426, 206, 448, white);</code></div>
+<div class="line number162 index161 alt1"><code class="csharp spaces">    </code><code class="csharp plain">gdImageSetThickness(im, lineWidth -10);<span>//將圖片中載入上述的線的寬度並增減少10單位</span></code></div>
+<div class="line number163 index162 alt2"><code class="csharp plain">gdImageLine(im, 232, 426, 206, 448, white);//<span>將圖片中將線條的起點終點連接起來並且上白色，起點(232，426)終點(206，448)</span></code></div>
 <div class="line number164 index163 alt1"> </div>
 <div class="line number165 index164 alt2"><code class="csharp spaces">  </code><code class="csharp plain">}</code></div>
 <div class="line number166 index165 alt1"> </div>
@@ -657,20 +654,19 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number182 index181 alt1"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth = 23;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number183 index182 alt2"> </div>
 <div class="line number184 index183 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number185 index184 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number186 index185 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX +70, startY +20, endX +70, endY +20, black);</code></div>
+<div class="line number185 index184 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number186 index185 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX +70, startY +20, endX +70, endY +20, black);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別增加70單位，垂直方向增加了20單位</span></code></div>
 <div class="line number187 index186 alt2"> </div>
 <div class="line number188 index187 alt1"><code class="csharp spaces">    </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number189 index188 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number190 index189 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);</code></div>
-<div class="line number191 index190 alt2"> </div>
+<div class="line number189 index188 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number190 index189 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上黑色</span></code> </div>
 <div class="line number192 index191 alt1"><code class="csharp spaces">    </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number193 index192 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number194 index193 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX +35, startY +10, endX +35, endY +10, black);</code></div>
+<div class="line number193 index192 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number194 index193 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX +35, startY +10, endX +35, endY +10, black);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別增加了35單位，垂直方向增加了10單位</span></code></div>
 <div class="line number195 index194 alt2"> </div>
-<div class="line number196 index195 alt1"><code class="csharp plain">gdImageSetThickness(im, lineWidth -10);</code></div>
-<div class="line number197 index196 alt2"><code class="csharp plain">gdImageLine(im, 624, 400, 734, 490, white);</code></div>
-<div class="line number198 index197 alt1"> </div>
+<div class="line number196 index195 alt1"><code class="csharp plain">gdImageSetThickness(im, lineWidth -10);<span>//將圖片中載入上述的線的寬度並減少10單位</span></code></div>
+<div class="line number197 index196 alt2"><code class="csharp plain">gdImageLine(im, 624, 400, 734, 490, white);//<span>將圖片中將線條的起點終點連接起來並且上白色，起點(624，400)終點(734，490)</span></code></div>
+<div class="line number198 index197 alt1"></div>
 <div class="line number199 index198 alt2"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">startX2 = 553;   </code></div>
 <div class="line number200 index199 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 線的起點 X 座標</code></div>
 <div class="line number201 index200 alt2"> </div>
@@ -686,17 +682,14 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number211 index210 alt2"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth2 = 25;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number212 index211 alt1"> </div>
 <div class="line number213 index212 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number214 index213 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +8);</code></div>
-<div class="line number215 index214 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX2 +139, startY2, endX2 +139, endY2, white);</code></div>
-<div class="line number216 index215 alt1"> </div>
-<div class="line number217 index216 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);</code></div>
-<div class="line number218 index217 alt1"><code class="csharp plain">gdImageLine(im, startX2 +157, startY2 -9 , endX2 +157, endY2 -9 , white);</code></div>
-<div class="line number219 index218 alt2"> </div>
-<div class="line number220 index219 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number221 index220 alt2"><code class="csharp plain">gdImageLine(im, startX2 +25, startY2 +155, endX2 +25, endY2 +155, white);</code></div>
-<div class="line number222 index221 alt1"> </div>
-<div class="line number223 index222 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +30);</code></div>
-<div class="line number224 index223 alt1"><code class="csharp plain">gdImageLine(im, startX2 -3, startY2 +170, endX2 , endY2 +170, white);</code></div>
+<div class="line number214 index213 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +8);<span>//將圖片中載入上述的線的寬度並增加8單位</span></code></div>
+<div class="line number215 index214 alt2"><code class="csharp spaces">  </code><code class="csharp plain"><code class="csharp plain">gdImageLine(im, startX2 +139, startY2, endX2 +139, endY2, white);/</code></code><span>/</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向增加139單位</span></div>
+<div class="line number217 index216 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);<span>//將圖片中載入上述的線的寬度並增加10單位</span></code></div>
+<div class="line number218 index217 alt1"><code class="csharp plain"><code class="csharp plain">gdImageLine(im, startX2 +157, startY2 -9 , endX2 +157, endY2 -9 , white);</code></code><span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加157單位，垂直方向減少9單位</span></div>
+<div class="line number220 index219 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number221 index220 alt2"><code class="csharp plain"><code class="csharp plain">gdImageLine(im, startX2 +25, startY2 +155, endX2 +25, endY2 +155, white);</code></code><span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加25單位，垂直方向增加155單位</span></div>
+<div class="line number223 index222 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +30);<span>//將圖片中載入上述的線的寬度並增加30單位</span></code></div>
+<div class="line number224 index223 alt1"><code class="csharp plain"><code class="csharp plain">gdImageLine(im, startX2 -3, startY2 +170, endX2 , endY2 +170, white);</code></code><span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別減少3單位，垂直方向增加170單位</span></div>
 <div class="line number225 index224 alt2"><code class="csharp spaces">  </code><code class="csharp plain">}</code></div>
 <div class="line number226 index225 alt1"><code class="csharp spaces">  </code><code class="csharp plain">{</code></div>
 <div class="line number227 index226 alt2"><code class="csharp spaces">    </code><code class="csharp comments">// 起點和終點位置</code></div>
@@ -716,15 +709,15 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number241 index240 alt2"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth = 23;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number242 index241 alt1"> </div>
 <div class="line number243 index242 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number244 index243 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number245 index244 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);</code></div>
+<div class="line number244 index243 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number245 index244 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上黑色</span></code></div>
 <div class="line number246 index245 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number247 index246 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number248 index247 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -35, startY +10, endX -35, endY +10, black);</code></div>
+<div class="line number247 index246 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number248 index247 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -35, startY +10, endX -35, endY +10, black);/<span>/</span><span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別減少35單位，垂直方向增加了10單位</span></code></div>
 <div class="line number249 index248 alt2"> </div>
 <div class="line number250 index249 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number251 index250 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number252 index251 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -70, startY +20, endX -70, endY +20, black);</code></div>
+<div class="line number251 index250 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number252 index251 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX -70, startY +20, endX -70, endY +20, black);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別減少70單位，垂直方向增加了20單位</span></code></div>
 <div class="line number253 index252 alt2"> </div>
 <div class="line number254 index253 alt1"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">startX2 = 213;   </code></div>
 <div class="line number255 index254 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 線的起點 X 座標</code></div>
@@ -741,23 +734,23 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number266 index265 alt1"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth2 = 25;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number267 index266 alt2"> </div>
 <div class="line number268 index267 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number269 index268 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +8);</code></div>
-<div class="line number270 index269 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX2 -11, startY2, endX2 -11, endY2, white);</code></div>
+<div class="line number269 index268 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +8);<span>//將圖片中載入上述的線的寬度並增加8單位</span></code></div>
+<div class="line number270 index269 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX2 -11, startY2, endX2 -11, endY2, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向減少11單位</span></code></div>
 <div class="line number271 index270 alt2"> </div>
-<div class="line number272 index271 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);</code></div>
-<div class="line number273 index272 alt2"><code class="csharp plain">gdImageLine(im, startX2 -30, startY2 -9 , endX2 -30, endY2 -9 , white);</code></div>
+<div class="line number272 index271 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);<span>//將圖片中載入上述的線的寬度並增加10單位</span></code></div>
+<div class="line number273 index272 alt2"><code class="csharp plain">gdImageLine(im, startX2 -30, startY2 -9 , endX2 -30, endY2 -9 , white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別減少30單位，垂直方向減少9單位</span></code></div>
 <div class="line number274 index273 alt1"> </div>
-<div class="line number275 index274 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth );</code></div>
-<div class="line number276 index275 alt1"><code class="csharp plain">gdImageLine(im, startX2 +100, startY2 +150, endX2 +100, endY2 +150, white);</code></div>
+<div class="line number275 index274 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth );<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number276 index275 alt1"><code class="csharp plain">gdImageLine(im, startX2 +100, startY2 +150, endX2 +100, endY2 +150, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加100單位，垂直方向增加150單位</span></code></div>
 <div class="line number277 index276 alt2"> </div>
-<div class="line number278 index277 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number279 index278 alt2"><code class="csharp plain">gdImageLine(im, startX2 +120, startY2 +155, endX2 +120, endY2 +155, white);</code></div>
+<div class="line number278 index277 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number279 index278 alt2"><code class="csharp plain">gdImageLine(im, startX2 +120, startY2 +155, endX2 +120, endY2 +155, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加120單位，垂直方向增加155單位</span></code></div>
 <div class="line number280 index279 alt1"> </div>
-<div class="line number281 index280 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +14);</code></div>
-<div class="line number282 index281 alt1"><code class="csharp plain">gdImageLine(im, startX2 +145, startY2 +157, endX2 +145, endY2 +157, white);</code></div>
+<div class="line number281 index280 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +14);<span>//將圖片中載入上述的線的寬度並增加14單位</span></code></div>
+<div class="line number282 index281 alt1"><code class="csharp plain">gdImageLine(im, startX2 +145, startY2 +157, endX2 +145, endY2 +157, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加145單位，垂直方向增加157單位</span></code></div>
 <div class="line number283 index282 alt2"> </div>
-<div class="line number284 index283 alt1"><code class="csharp spaces">    </code><code class="csharp plain">gdImageSetThickness(im, lineWidth -10);</code></div>
-<div class="line number285 index284 alt2"><code class="csharp plain">gdImageLine(im, 232, 426, 206, 448, white);</code></div>
+<div class="line number284 index283 alt1"><code class="csharp spaces">    </code><code class="csharp plain">gdImageSetThickness(im, lineWidth -10);<span>//將圖片中載入上述的線的寬度並減少10單位</span></code></div>
+<div class="line number285 index284 alt2"><code class="csharp plain">gdImageLine(im, 232, 426, 206, 448, white);/<span>/</span><span>將圖片中將線條的起點終點連接起來並且上白色，起點(232，426)終點(206，448)</span></code></div>
 <div class="line number286 index285 alt1"> </div>
 <div class="line number287 index286 alt2"><code class="csharp spaces">  </code><code class="csharp plain">}</code></div>
 <div class="line number288 index287 alt1"><code class="csharp spaces">  </code><code class="csharp plain">{</code></div>
@@ -778,19 +771,19 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number303 index302 alt2"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth = 23;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number304 index303 alt1"> </div>
 <div class="line number305 index304 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number306 index305 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number307 index306 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX +70, startY -20, endX +70, endY -20, black);</code></div>
+<div class="line number306 index305 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number307 index306 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX +70, startY -20, endX +70, endY -20, black);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別增加70單位，垂直方向減少了20單位</span></code></div>
 <div class="line number308 index307 alt1"> </div>
 <div class="line number309 index308 alt2"><code class="csharp spaces">    </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number310 index309 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number311 index310 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);</code></div>
+<div class="line number310 index309 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number311 index310 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX, startY, endX, endY, black);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上黑色</span></code></div>
 <div class="line number312 index311 alt1"> </div>
-<div class="line number313 index312 alt2"><code class="csharp spaces">    </code><code class="csharp plain">gdImageSetThickness(im, lineWidth -10);</code></div>
-<div class="line number314 index313 alt1"><code class="csharp plain">gdImageLine(im, 624, 212, 734, 118, white);</code></div>
+<div class="line number313 index312 alt2"><code class="csharp spaces">    </code><code class="csharp plain">gdImageSetThickness(im, lineWidth -10);<span>//將圖片中載入上述的線的寬度並減少10單位</span></code></div>
+<div class="line number314 index313 alt1"><code class="csharp plain">gdImageLine(im, 624, 212, 734, 118, white);<span>/</span><span>/</span><span>將圖片中將線條的起點終點連接起來並且上白色，起點(624，212)終點(734，118)</span></code></div>
 <div class="line number315 index314 alt2"> </div>
 <div class="line number316 index315 alt1"><code class="csharp spaces">    </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number317 index316 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number318 index317 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX +35, startY -10, endX +35, endY -10, black);</code></div>
+<div class="line number317 index316 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number318 index317 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX +35, startY -10, endX +35, endY -10, black);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上黑色，再</span><span>將原本的起點及終點水平方向分別增加35單位，垂直方向減少了10單位</span></code></div>
 <div class="line number319 index318 alt2"> </div>
 <div class="line number320 index319 alt1"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">startX2 = 553;   </code></div>
 <div class="line number321 index320 alt2"><code class="csharp spaces">  </code><code class="csharp comments">// 線的起點 X 座標</code></div>
@@ -807,19 +800,21 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number332 index331 alt1"><code class="csharp spaces">  </code><code class="csharp keyword">int</code> <code class="csharp plain">lineWidth2 = 25;  </code><code class="csharp comments">// 線的寬度</code></div>
 <div class="line number333 index332 alt2"> </div>
 <div class="line number334 index333 alt1"><code class="csharp spaces">  </code><code class="csharp comments">// 繪製線段</code></div>
-<div class="line number335 index334 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +8);</code></div>
-<div class="line number336 index335 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX2 +134, startY2, endX2 +134, endY2, white);</code></div>
-<div class="line number337 index336 alt2"> </div>
-<div class="line number338 index337 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);</code></div>
-<div class="line number339 index338 alt2"><code class="csharp plain">gdImageLine(im, startX2 +157, startY2 +9 , endX2 +157, endY2 +9 , white);</code></div>
+<div class="line number335 index334 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +8);<span>//將圖片中載入上述的線的寬度並增加8單位</span></code></div>
+<div class="line number336 index335 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageLine(im, startX2 +134, startY2, endX2 +134, endY2, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向增加134單位</span></code></div>
+<div class="line number338 index337 alt1"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +10);<span>//將圖片中載入上述的線的寬度並增加10單位</span></code></div>
+<div class="line number339 index338 alt2"><code class="csharp plain">gdImageLine(im, startX2 +157, startY2 +9 , endX2 +157, endY2 +9 , white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加157單位，垂直方向增加9單位</span></code></div>
 <div class="line number340 index339 alt1"> </div>
-<div class="line number341 index340 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);</code></div>
-<div class="line number342 index341 alt1"><code class="csharp plain">gdImageLine(im, startX2 +25, startY2 -155, endX2 +25, endY2 -155, white);</code></div>
+<div class="line number341 index340 alt2"><code class="csharp spaces">  </code><code class="csharp plain">gdImageSetThickness(im, lineWidth);<span>//將圖片中載入上述的線的寬度</span></code></div>
+<div class="line number342 index341 alt1"><code class="csharp plain">gdImageLine(im, startX2 +25, startY2 -155, endX2 +25, endY2 -155, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別增加25單位，垂直方向減少155單位</span></code></div>
 <div class="line number343 index342 alt2"> </div>
-<div class="line number344 index343 alt1"><code class="csharp spaces">    </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +30);</code></div>
-<div class="line number345 index344 alt2"><code class="csharp plain">gdImageLine(im, startX2 -5, startY2 -155, endX2 -5, endY2 -155, white);</code></div>
+<div class="line number344 index343 alt1"><code class="csharp spaces">    </code><code class="csharp plain">gdImageSetThickness(im, lineWidth +30);<span>//將圖片中載入上述的線的寬度並增加30單位</span></code></div>
+<div class="line number344 index343 alt1"><code class="csharp plain"></code></div>
+<div class="line number345 index344 alt2"><code class="csharp plain">gdImageLine(im, startX2 -5, startY2 -155, endX2 -5, endY2 -155, white);<span>//</span><span>將圖片中將線條的起點終點連接起來並且上白色</span><span>，再</span><span>將原本的起點及終點水平方向分別減少5單位，垂直方向減少155單位</span></code></div>
 <div class="line number346 index345 alt1"> </div>
-<div class="line number347 index346 alt2"><code class="csharp spaces">  </code><code class="csharp plain">}//上面的繪製線條是先把圖形外部的長方體分成左上、右上、左下、右下四塊區域，在分別畫出黑色、白色的區塊</code></div>
+<div class="line number347 index346 alt2"><code class="csharp spaces">  </code><code class="csharp plain">}</code></div>
+<div class="line number347 index346 alt2"><code class="csharp plain"></code></div>
+<div class="line number347 index346 alt2"><code class="csharp plain">    //上面的繪製線條是把長方體黑色一塊一塊畫出來，再將白色部分也一塊一塊繪出</code></div>
 <div class="line number348 index347 alt1"> </div>
 <div class="line number349 index348 alt2"><code class="csharp spaces">    </code><code class="csharp comments">// Save image</code></div>
 <div class="line number350 index349 alt1"><code class="csharp plain">FILE *outputFile = fopen(</code><code class="csharp string">"./../images/korea_flag.png"</code><code class="csharp plain">, </code><code class="csharp string">"wb"</code><code class="csharp plain">);</code></div>
@@ -852,8 +847,7 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="syntaxhighlighter html"><img alt="" height="200" src="/images/英國國旗.png" width="400"/></div>
 </div>
 </div>
-</div>
-<h1>W8-w9</h1>
+</div><h1>W8-w9</h1>
 <p>分組</p>
 <h1>w12</h1>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">{ pkgs }: { </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">deps = [ </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.llvmPackages_rocm.clang </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.gd </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.gnuplot </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">]; </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">}</span></span></span></span></span></span></p>
