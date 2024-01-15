@@ -358,23 +358,114 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p>void draw_usa_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;//開始繪製美國國旗，並給予外框、需另外加入的工具</p>
 <p>// <br/> red = gdImageColorAllocate(img, 178, 34, 52); // 红色条纹<br/> white = gdImageColorAllocate(img, 255, 255, 255); // 白色条纹<br/> blue = gdImageColorAllocate(img, 60, 59, 110); // 蓝色矩形</p>
 <p>int stripe_height = height / 13;<br/> int stripe_width = width;<br/> int star_size = (int)(0.0308 * height); // 星星大小</p>
-<p>for (int y = 0; y &lt; height; y += stripe_height) {<br/> if (y / stripe_height % 2 == 0) {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, red);<br/> } else {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, white);<br/> }<br/> }//這段話表示在此功能中我們將會利用</p>
-<p>gdImageFilledRectangle(img, 0, 0, width * 2 / 5, stripe_height * 7, blue);</p>
+<p>for (int y = 0; y &lt; height; y += stripe_height) {<br/> if (y / stripe_height % 2 == 0) {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, red);<br/> } else {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, white);<br/> }<br/> }//這段話表示在此功能中我們將會把圖形按照基偶數給予顏色(偶數紅基數白)而高度就是上述給予的stripe_height</p>
+<p>gdImageFilledRectangle(img, 0, 0, width * 2 / 5, stripe_height * 7, blue);//將線條塗上顏色</p>
 <p>int star_spacing_x = (int)(0.129 * height); // 横向星星之间的间距<br/> int star_spacing_y = (int)(0.054 * height); // 纵向星星之间的间距<br/> int star_start_x = (int)(0.125 * height); // 星星的起始X位置<br/> int star_start_y = (int)(0.0485 * height); // 星星的起始Y位置</p>
-<p>for (int row = 0; row &lt; 9; row++) {<br/> int starsPerRow = (row % 2 == 0) ? 6 : 5;</p>
+<p>for (int row = 0; row &lt; 9; row++) {<br/> int starsPerRow = (row % 2 == 0) ? 6 : 5;//<span>這個迴圈用來迭代 </span><code>row</code><span> 變數，並根據 </span><code>row</code><span> 的奇偶性設定每行應該有的星星數目。在偶數行中，</span><code>starsPerRow</code><span> 被設為 6，而在奇數行中設為 5</span></p>
 <p>// 计算2、4、6和8排星星的偏移量<br/> int offset_x = (row % 2 == 0) ? star_spacing_x / -2 : 0;</p>
-<p>for (int star = 0; star &lt; starsPerRow; star++) {<br/> int x = star_start_x + star * star_spacing_x + offset_x;</p>
-<p>// 旋转角度（以弧度为单位）<br/> double rotation_angle = M_PI / 5; // 忘記多少度的旋转</p>
-<p>int y = star_start_y + row * star_spacing_y;<br/> draw_star(img, x, y, star_size, white, rotation_angle);<br/> }<br/> }<br/>}</p>
-<p>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {<br/> gdPoint points[10];</p>
-<p>for (int i = 0; i &lt; 10; i++) {<br/> double angle = M_PI / 2 + i * 2 * M_PI / 10 + rotation_angle;<br/> int radius = (i % 2 == 0) ? size : size / 2;<br/> points[i].x = x + radius * cos(angle);<br/> points[i].y = y + radius * sin(angle);<br/> }</p>
-<p>// 用指定的颜色填充星星<br/> gdImageFilledPolygon(img, points, 10, color);<br/>}</p>
+<p>for (int star = 0; star &lt; starsPerRow; star++) {<br/> int x = star_start_x + star * star_spacing_x + offset_x;//<span>迴圈用於計算每一顆星星的 x 座標。這樣的邏輯可以用來在每一行裡生成特定模式的星星排列。</span></p>
+<p>// 旋转角度（以弧度为单位）<br/> double rotation_angle = M_PI / 5; //<span>這代表著每一顆星星的旋轉角度是圓周率的五分之一。這樣的設定可以產生一種均勻分佈的星星旋轉效果</span></p>
+<p>int y = star_start_y + row * star_spacing_y;//見算每個y座標的位置上下偏差<br/> draw_star(img, x, y, star_size, white, rotation_angle);//在星星的圖形中載入剛剛給予的座標以及參數<br/> }<br/> }<br/>}</p>
+<p>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {<br/> gdPoint points[10];//<span>此為打開這個gd程式庫並且開始給予所需參數</span></p>
+<p>for (int i = 0; i &lt; 10; i++) {<br/> double angle = M_PI / 2 + i * 2 * M_PI / 10 + rotation_angle;<br/> int radius = (i % 2 == 0) ? size : size / 2;<br/> points[i].x = x + radius * cos(angle);<br/> points[i].y = y + radius * sin(angle);<br/> }//前面已將基數偶數排的星星數量及大小畫出來，而這裡是在宣告星星的起點位置以及星星的外框形狀</p>
+<p>// 用指定的颜色填充星星<br/> gdImageFilledPolygon(img, points, 10, color);//將星星塗上顏色<br/>}</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></span></span>clear</p>
 <p>cd downloads</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_usa_flag.c - lgd- lm</span></span></span></span></span></span></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
 <p><img alt="" height="211" src="/images/usa_flag.png" width="400"/></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></span></span></p>
+<div class="line number1 index0 alt2"><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">參照維基百科上面的台灣國旗</code></div>
+<div class="line number2 index1 alt1"><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">https:</code><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">zh.m.wikipedia.org</code><code class="py keyword">/</code><code class="py plain">zh</code><code class="py keyword">-</code><code class="py plain">tw</code><code class="py keyword">/</code><code class="py keyword">%</code><code class="py plain">E4</code><code class="py keyword">%</code><code class="py plain">B8</code><code class="py keyword">%</code><code class="py plain">AD</code><code class="py keyword">%</code><code class="py plain">E8</code><code class="py keyword">%</code><code class="py value">8F</code><code class="py keyword">%</code><code class="py plain">AF</code><code class="py keyword">%</code><code class="py plain">E6</code><code class="py keyword">%</code><code class="py plain">B0</code><code class="py keyword">%</code><code class="py value">91</code><code class="py keyword">%</code><code class="py plain">E5</code><code class="py keyword">%</code><code class="py value">9C</code><code class="py keyword">%</code><code class="py value">8B</code><code class="py keyword">%</code><code class="py plain">E5</code><code class="py keyword">%</code><code class="py value">9C</code><code class="py keyword">%</code><code class="py value">8B</code><code class="py keyword">%</code><code class="py plain">E6</code><code class="py keyword">%</code><code class="py value">97</code><code class="py keyword">%</code><code class="py value">97</code></div>
+<div class="line number3 index2 alt2"><code class="py comments">#include &lt;stdio.h&gt;//用於輸入和輸出的函數 (列印文字等等)</code></div>
+<div class="line number4 index3 alt1"><code class="py comments">#include &lt;gd.h&gt;//<span>繪圖工具</span></code></div>
+<div class="line number5 index4 alt2"><code class="py comments">#include &lt;math.h&gt;//<span>計算工具</span></code></div>
+<div class="line number6 index5 alt1"> </div>
+<div class="line number7 index6 alt2"><code class="py plain">void draw_roc_flag(gdImagePtr img);//<span>繪製此檔，並以img的圖片格式匯出</span></code></div>
+<div class="line number8 index7 alt1"><code class="py plain">void draw_white_sun(gdImagePtr img, </code><code class="py functions">int</code> <code class="py plain">center_x, </code><code class="py functions">int</code> <code class="py plain">center_y, </code><code class="py functions">int</code> <code class="py plain">sun_radius, </code><code class="py functions">int</code> <code class="py plain">white, </code><code class="py functions">int</code> <code class="py plain">red, </code><code class="py functions">int</code> <code class="py plain">blue);//繪製圖形，並宣告所需的參數</code></div>
+<div class="line number9 index8 alt2"> </div>
+<div class="line number10 index9 alt1"><code class="py functions">int</code> <code class="py plain">main() {</code></div>
+<div class="line number11 index10 alt2"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">width </code><code class="py value">3</code><code class="py plain">: height </code><code class="py value">2</code></div>
+<div class="line number12 index11 alt1"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">width </code><code class="py keyword">=</code> <code class="py value">1200</code><code class="py plain">;</code></div>
+<div class="line number13 index12 alt2"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">height </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)(width</code><code class="py keyword">*</code><code class="py value">2.0</code> <code class="py keyword">/</code> <code class="py value">3.0</code><code class="py plain">);//給予圖形比例以及外框大小</code></div>
+<div class="line number14 index13 alt1"> </div>
+<div class="line number15 index14 alt2"><code class="py spaces">    </code><code class="py plain">gdImagePtr img </code><code class="py keyword">=</code> <code class="py plain"><code class="py plain">gdImageCreateTrueColor(width, height);</code></code>
+<p></p>
+</div>
+<div class="line number16 index15 alt1"><code class="py spaces">    </code><code class="py plain">gdImageAlphaBlending(img, </code><code class="py value">0</code><code class="py plain"><code class="py plain">);//</code></code>
+<p>然後給予創建彩色圖片，且不<span>允許圖像中的像素是透明或半透明(0為不允許1為允許)</span></p>
+<p>(將繪製圖形出圖的形式)</p>
+</div>
+<div class="line number17 index16 alt2"> </div>
+<div class="line number18 index17 alt1"><code class="py spaces">    </code><code class="py plain">draw_roc_flag(img);</code></div>
+<div class="line number19 index18 alt2"> </div>
+<div class="line number20 index19 alt1"><code class="py spaces">    </code><code class="py functions">FILE</code> <code class="py keyword">*</code><code class="py plain">outputFile </code><code class="py keyword">=</code> <code class="py plain">fopen(</code><code class="py string">"./../images/roc_flag.png"</code><code class="py plain">, </code><code class="py string">"wb"</code><code class="py plain">);</code></div>
+<div class="line number21 index20 alt2"><code class="py spaces">    </code><code class="py keyword">if</code> <code class="py plain">(outputFile </code><code class="py keyword">=</code><code class="py keyword">=</code> <code class="py plain">NULL) {</code></div>
+<div class="line number22 index21 alt1"><code class="py spaces">        </code><code class="py plain">fprintf(stderr, </code><code class="py string">"Error opening the output file.\n"</code><code class="py plain">);</code></div>
+<div class="line number23 index22 alt2"><code class="py spaces">        </code><code class="py keyword">return</code> <code class="py value">1</code><code class="py plain">;</code></div>
+<div class="line number24 index23 alt1"><code class="py spaces">    </code><code class="py plain">}//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span></code></div>
+<div class="line number25 index24 alt2"><code class="py spaces">    </code><code class="py plain">gdImagePngEx(img, outputFile, </code><code class="py value">9</code><code class="py plain">);</code></div>
+<div class="line number26 index25 alt1"><code class="py spaces">    </code><code class="py plain">fclose(outputFile);</code></div>
+<div class="line number27 index26 alt2"><code class="py spaces">    </code><code class="py plain">gdImageDestroy(img);</code></div>
+<div class="line number28 index27 alt1"><code class="py spaces">    </code><code class="py keyword">return</code> <code class="py value">0</code><code class="py plain">;</code></div>
+<div class="line number29 index28 alt2"><code class="py plain">}</code></div>
+<div class="line number30 index29 alt1"> </div>
+<div class="line number31 index30 alt2"><code class="py plain">void draw_roc_flag(gdImagePtr img) {</code></div>
+<div class="line number32 index31 alt1"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">width </code><code class="py keyword">=</code> <code class="py plain">gdImageSX(img);</code></div>
+<div class="line number33 index32 alt2"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">height </code><code class="py keyword">=</code> <code class="py plain">gdImageSY(img);</code></div>
+<div class="line number34 index33 alt1"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">red, white, blue;</code></div>
+<div class="line number35 index34 alt2"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">center_x </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)(width</code><code class="py keyword">/</code><code class="py value">4</code><code class="py plain">);</code></div>
+<div class="line number36 index35 alt1"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">center_y </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)(height</code><code class="py keyword">/</code><code class="py value">4</code><code class="py plain">);</code></div>
+<div class="line number37 index36 alt2"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">sun_radius </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)(width</code><code class="py keyword">/</code><code class="py value">8</code><code class="py plain">);</code></div>
+<div class="line number38 index37 alt1"> </div>
+<div class="line number39 index38 alt2"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">Colors </code><code class="py keyword">for</code> <code class="py plain">the flag</code></div>
+<div class="line number40 index39 alt1"><code class="py spaces">    </code><code class="py plain">red </code><code class="py keyword">=</code> <code class="py plain">gdImageColorAllocate(img, </code><code class="py value">242</code><code class="py plain">, </code><code class="py value">0</code><code class="py plain">, </code><code class="py value">0</code><code class="py plain">); </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">Red color</code></div>
+<div class="line number41 index40 alt2"><code class="py spaces">    </code><code class="py plain">white </code><code class="py keyword">=</code> <code class="py plain">gdImageColorAllocate(img, </code><code class="py value">255</code><code class="py plain">, </code><code class="py value">255</code><code class="py plain">, </code><code class="py value">255</code><code class="py plain">); </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">White stripes</code></div>
+<div class="line number42 index41 alt1"><code class="py spaces">    </code><code class="py plain">blue </code><code class="py keyword">=</code> <code class="py plain">gdImageColorAllocate(img, </code><code class="py value">0</code><code class="py plain">, </code><code class="py value">41</code><code class="py plain">, </code><code class="py value">204</code><code class="py plain">); </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">Blue</code></div>
+<div class="line number43 index42 alt2"> </div>
+<div class="line number44 index43 alt1"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">繪製紅色矩形區域</code></div>
+<div class="line number45 index44 alt2"><code class="py spaces">    </code><code class="py plain">gdImageFilledRectangle(img, </code><code class="py value">0</code><code class="py plain">, </code><code class="py value">0</code><code class="py plain">, width, height, red);</code></div>
+<div class="line number46 index45 alt1"> </div>
+<div class="line number47 index46 alt2"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">繪製藍色矩形區域</code></div>
+<div class="line number48 index47 alt1"><code class="py spaces">    </code><code class="py plain">gdImageFilledRectangle(img, </code><code class="py value">0</code><code class="py plain">, </code><code class="py value">0</code><code class="py plain">, (</code><code class="py functions">int</code><code class="py plain">)(width</code><code class="py keyword">/</code><code class="py value">2.0</code><code class="py plain">), (</code><code class="py functions">int</code><code class="py plain">)(height</code><code class="py keyword">/</code><code class="py value">2.0</code><code class="py plain">), blue);</code></div>
+<div class="line number49 index48 alt2"> </div>
+<div class="line number50 index49 alt1"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">繪製太陽</code></div>
+<div class="line number51 index50 alt2"><code class="py spaces">    </code><code class="py plain">draw_white_sun(img, center_x, center_y, sun_radius, white, red, blue);</code></div>
+<div class="line number52 index51 alt1"><code class="py plain">}</code></div>
+<div class="line number53 index52 alt2"><code class="py plain">void draw_white_sun(gdImagePtr img, </code><code class="py functions">int</code> <code class="py plain">center_x, </code><code class="py functions">int</code> <code class="py plain">center_y, </code><code class="py functions">int</code> <code class="py plain">sun_radius, </code><code class="py functions">int</code> <code class="py plain">white, </code><code class="py functions">int</code> <code class="py plain">red, </code><code class="py functions">int</code> <code class="py plain">blue) {</code></div>
+<div class="line number54 index53 alt1"><code class="py spaces">    </code><code class="py functions">float</code> <code class="py plain">angle </code><code class="py keyword">=</code> <code class="py value">0</code><code class="py plain">;</code></div>
+<div class="line number55 index54 alt2"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">numRays </code><code class="py keyword">=</code> <code class="py value">12</code><code class="py plain">; </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">光芒的數量</code></div>
+<div class="line number56 index55 alt1"> </div>
+<div class="line number57 index56 alt2"><code class="py spaces">    </code><code class="py plain">gdPoint points[</code><code class="py value">3</code><code class="py plain">]; </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">三個頂點的陣列</code></div>
+<div class="line number58 index57 alt1"> </div>
+<div class="line number59 index58 alt2"><code class="py spaces">    </code><code class="py keyword">for</code> <code class="py plain">(</code><code class="py functions">int</code> <code class="py plain">i </code><code class="py keyword">=</code> <code class="py value">0</code><code class="py plain">; i &lt; numRays; i</code><code class="py keyword">+</code><code class="py keyword">+</code><code class="py plain">) {</code></div>
+<div class="line number60 index59 alt1"><code class="py spaces">        </code><code class="py plain">angle </code><code class="py keyword">=</code> <code class="py plain">i </code><code class="py keyword">*</code> <code class="py plain">(</code><code class="py value">2</code> <code class="py keyword">*</code> <code class="py plain">M_PI </code><code class="py keyword">/</code> <code class="py plain">numRays);</code></div>
+<div class="line number61 index60 alt2"><code class="py spaces">        </code><code class="py functions">float</code> <code class="py plain">x1 </code><code class="py keyword">=</code> <code class="py plain">center_x </code><code class="py keyword">+</code> <code class="py plain">cos(angle) </code><code class="py keyword">*</code> <code class="py plain">sun_radius;</code></div>
+<div class="line number62 index61 alt1"><code class="py spaces">        </code><code class="py functions">float</code> <code class="py plain">y1 </code><code class="py keyword">=</code> <code class="py plain">center_y </code><code class="py keyword">+</code> <code class="py plain">sin(angle) </code><code class="py keyword">*</code> <code class="py plain">sun_radius;</code></div>
+<div class="line number63 index62 alt2"> </div>
+<div class="line number64 index63 alt1"><code class="py spaces">        </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">調整兩個底邊頂點的位置</code></div>
+<div class="line number65 index64 alt2"><code class="py spaces">      </code><code class="py functions">float</code> <code class="py plain">x2 </code><code class="py keyword">=</code> <code class="py plain">center_x </code><code class="py keyword">+</code> <code class="py plain">cos(angle </code><code class="py keyword">+</code> <code class="py value">0.35</code><code class="py plain">) </code><code class="py keyword">*</code> <code class="py plain">(sun_radius </code><code class="py keyword">*</code> <code class="py value">0.5</code><code class="py plain">);</code></div>
+<div class="line number66 index65 alt1"><code class="py spaces">      </code><code class="py functions">float</code> <code class="py plain">y2 </code><code class="py keyword">=</code> <code class="py plain">center_y </code><code class="py keyword">+</code> <code class="py plain">sin(angle </code><code class="py keyword">+</code> <code class="py value">0.35</code><code class="py plain">) </code><code class="py keyword">*</code> <code class="py plain">(sun_radius </code><code class="py keyword">*</code> <code class="py value">0.5</code><code class="py plain">);</code></div>
+<div class="line number67 index66 alt2"><code class="py spaces">      </code><code class="py functions">float</code> <code class="py plain">x3 </code><code class="py keyword">=</code> <code class="py plain">center_x </code><code class="py keyword">+</code> <code class="py plain">cos(angle </code><code class="py keyword">-</code> <code class="py value">0.35</code><code class="py plain">) </code><code class="py keyword">*</code> <code class="py plain">(sun_radius </code><code class="py keyword">*</code> <code class="py value">0.5</code><code class="py plain">);</code></div>
+<div class="line number68 index67 alt1"><code class="py spaces">      </code><code class="py functions">float</code> <code class="py plain">y3 </code><code class="py keyword">=</code> <code class="py plain">center_y </code><code class="py keyword">+</code> <code class="py plain">sin(angle </code><code class="py keyword">-</code> <code class="py value">0.35</code><code class="py plain">) </code><code class="py keyword">*</code> <code class="py plain">(sun_radius </code><code class="py keyword">*</code> <code class="py value">0.5</code><code class="py plain">);</code></div>
+<div class="line number69 index68 alt2"> </div>
+<div class="line number70 index69 alt1"><code class="py spaces">        </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">設定多邊形的三個頂點</code></div>
+<div class="line number71 index70 alt2"><code class="py spaces">        </code><code class="py plain">points[</code><code class="py value">0</code><code class="py plain">].x </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)x1;</code></div>
+<div class="line number72 index71 alt1"><code class="py spaces">        </code><code class="py plain">points[</code><code class="py value">0</code><code class="py plain">].y </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)y1;</code></div>
+<div class="line number73 index72 alt2"><code class="py spaces">        </code><code class="py plain">points[</code><code class="py value">1</code><code class="py plain">].x </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)x2;</code></div>
+<div class="line number74 index73 alt1"><code class="py spaces">        </code><code class="py plain">points[</code><code class="py value">1</code><code class="py plain">].y </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)y2;</code></div>
+<div class="line number75 index74 alt2"><code class="py spaces">        </code><code class="py plain">points[</code><code class="py value">2</code><code class="py plain">].x </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)x3;</code></div>
+<div class="line number76 index75 alt1"><code class="py spaces">        </code><code class="py plain">points[</code><code class="py value">2</code><code class="py plain">].y </code><code class="py keyword">=</code> <code class="py plain">(</code><code class="py functions">int</code><code class="py plain">)y3;</code></div>
+<div class="line number77 index76 alt2"> </div>
+<div class="line number78 index77 alt1"><code class="py spaces">        </code><code class="py plain">gdImageFilledPolygon(img, points, </code><code class="py value">3</code><code class="py plain">, white);</code></div>
+<div class="line number79 index78 alt2"><code class="py spaces">    </code><code class="py plain">}</code></div>
+<div class="line number80 index79 alt1"><code class="py spaces">  </code><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">外圈</code></div>
+<div class="line number81 index80 alt2"><code class="py spaces">  </code><code class="py plain">gdImageFilledEllipse(img, center_x, center_y, sun_radius </code><code class="py keyword">*</code> <code class="py value">1.2</code><code class="py plain">, sun_radius </code><code class="py keyword">*</code> <code class="py value">1.2</code><code class="py plain">, blue);</code></div>
+<div class="line number82 index81 alt1"><code class="py spaces">  </code> </div>
+<div class="line number83 index82 alt2"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">繪製太陽內部</code></div>
+<div class="line number84 index83 alt1"><code class="py spaces">    </code><code class="py plain">gdImageFilledEllipse(img, center_x, center_y, sun_radius </code><code class="py keyword">*</code> <code class="py value">1.1</code><code class="py plain">, sun_radius </code><code class="py keyword">*</code> <code class="py value">1.1</code><code class="py plain">, white);</code></div>
+<div class="line number85 index84 alt2"><code class="py plain">}</code></div>
+<div class="line number85 index84 alt2">
 <div class="line number1 index0 alt2"><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">參照維基百科上面的台灣國旗</code></div>
 <div class="line number2 index1 alt1"><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">https:</code><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">zh.m.wikipedia.org</code><code class="py keyword">/</code><code class="py plain">zh</code><code class="py keyword">-</code><code class="py plain">tw</code><code class="py keyword">/</code><code class="py keyword">%</code><code class="py plain">E4</code><code class="py keyword">%</code><code class="py plain">B8</code><code class="py keyword">%</code><code class="py plain">AD</code><code class="py keyword">%</code><code class="py plain">E8</code><code class="py keyword">%</code><code class="py value">8F</code><code class="py keyword">%</code><code class="py plain">AF</code><code class="py keyword">%</code><code class="py plain">E6</code><code class="py keyword">%</code><code class="py plain">B0</code><code class="py keyword">%</code><code class="py value">91</code><code class="py keyword">%</code><code class="py plain">E5</code><code class="py keyword">%</code><code class="py value">9C</code><code class="py keyword">%</code><code class="py value">8B</code><code class="py keyword">%</code><code class="py plain">E5</code><code class="py keyword">%</code><code class="py value">9C</code><code class="py keyword">%</code><code class="py value">8B</code><code class="py keyword">%</code><code class="py plain">E6</code><code class="py keyword">%</code><code class="py value">97</code><code class="py keyword">%</code><code class="py value">97</code></div>
 <div class="line number3 index2 alt2"><code class="py comments">#include &lt;stdio.h&gt;</code></div>
@@ -460,6 +551,7 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="line number83 index82 alt2"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">繪製太陽內部</code></div>
 <div class="line number84 index83 alt1"><code class="py spaces">    </code><code class="py plain">gdImageFilledEllipse(img, center_x, center_y, sun_radius </code><code class="py keyword">*</code> <code class="py value">1.1</code><code class="py plain">, sun_radius </code><code class="py keyword">*</code> <code class="py value">1.1</code><code class="py plain">, white);</code></div>
 <div class="line number85 index84 alt2"><code class="py plain">}</code></div>
+</div>
 <div class="line number85 index84 alt2"><code class="py plain">clear</code></div>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cd downloads</span></span></span></span></span></span></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_roc_flag.c-lgd-lm</span></span></span></span></span></span></p>
@@ -467,56 +559,63 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><img alt="" height="533" src="/images/roc_flag_gd.png" width="800"/></span></span></span></span></span></span></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></span></span></p>
 <div class="line number59 index58 alt2">
-<div class="line number1 index0 alt2"><code class="js preprocessor"></code></div>
-<div class="line number1 index0 alt2"><code class="html plain">#include &lt;</code><code class="html keyword">stdio.h</code><code class="html plain">&gt;</code></div>
-<div class="line number2 index1 alt1"><code class="html plain">#include &lt;</code><code class="html keyword">gd.h</code><code class="html plain">&gt;</code></div>
-<div class="line number3 index2 alt2"><code class="html plain">#include &lt;</code><code class="html keyword">math.h</code><code class="html plain">&gt;</code></div>
-<div class="line number4 index3 alt1"> </div>
-<div class="line number5 index4 alt2"><code class="html plain">void draw_japan_flag(gdImagePtr img);</code></div>
-<div class="line number6 index5 alt1"><code class="html plain">void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int white, int red );</code></div>
-<div class="line number7 index6 alt2"> </div>
-<div class="line number8 index7 alt1"><code class="html plain">int main() {</code></div>
-<div class="line number9 index8 alt2"><code class="html spaces">    </code><code class="html plain">// width 3: height 2</code></div>
-<div class="line number10 index9 alt1"><code class="html spaces">    </code><code class="html plain">int width = 1200;</code></div>
-<div class="line number11 index10 alt2"><code class="html spaces">    </code><code class="html plain">int height = 2 * width / 3;</code></div>
-<div class="line number12 index11 alt1"> </div>
-<div class="line number13 index12 alt2"><code class="html spaces">    </code><code class="html plain">gdImagePtr img = gdImageCreateTrueColor(width, height);</code></div>
-<div class="line number14 index13 alt1"><code class="html spaces">    </code><code class="html plain">gdImageAlphaBlending(img, 0);</code></div>
-<div class="line number15 index14 alt2"> </div>
-<div class="line number16 index15 alt1"><code class="html spaces">    </code><code class="html plain">draw_japan_flag(img);</code></div>
-<div class="line number17 index16 alt2"> </div>
-<div class="line number18 index17 alt1"><code class="html spaces">    </code><code class="html plain">FILE *outputFile = fopen("./../images/japan_flag.png", "wb");</code></div>
-<div class="line number19 index18 alt2"><code class="html spaces">    </code><code class="html plain">if (outputFile == NULL) {</code></div>
-<div class="line number20 index19 alt1"><code class="html spaces">        </code><code class="html plain">fprintf(stderr, "Error opening the output file.\n");</code></div>
-<div class="line number21 index20 alt2"><code class="html spaces">        </code><code class="html plain">return 1;</code></div>
-<div class="line number22 index21 alt1"><code class="html spaces">    </code><code class="html plain">}</code></div>
-<div class="line number23 index22 alt2"><code class="html spaces">    </code><code class="html plain">gdImagePngEx(img, outputFile, 9);</code></div>
-<div class="line number24 index23 alt1"><code class="html spaces">    </code><code class="html plain">fclose(outputFile);</code></div>
-<div class="line number25 index24 alt2"><code class="html spaces">    </code><code class="html plain">gdImageDestroy(img);</code></div>
-<div class="line number26 index25 alt1"><code class="html spaces">    </code><code class="html plain">return 0;</code></div>
-<div class="line number27 index26 alt2"><code class="html plain">}</code></div>
-<div class="line number28 index27 alt1"> </div>
-<div class="line number29 index28 alt2"><code class="html plain">void draw_japan_flag(gdImagePtr img) {</code></div>
-<div class="line number30 index29 alt1"><code class="html spaces">    </code><code class="html plain">int width = gdImageSX(img);</code></div>
-<div class="line number31 index30 alt2"><code class="html spaces">    </code><code class="html plain">int height = gdImageSY(img);</code></div>
-<div class="line number32 index31 alt1"><code class="html spaces">    </code><code class="html plain">int red, white ;</code></div>
-<div class="line number33 index32 alt2"><code class="html spaces">    </code><code class="html plain">int center_x =  0.5 * width;</code></div>
-<div class="line number34 index33 alt1"><code class="html spaces">    </code><code class="html plain">int center_y =  0.5 * height;</code></div>
-<div class="line number35 index34 alt2"><code class="html spaces">    </code><code class="html plain">int sun_radius = 145 ;</code></div>
-<div class="line number36 index35 alt1"> </div>
-<div class="line number37 index36 alt2"><code class="html spaces">    </code><code class="html plain">// Colors for the flag</code></div>
-<div class="line number38 index37 alt1"><code class="html spaces">    </code><code class="html plain">red = gdImageColorAllocate(img, 242, 0, 0); // Red color</code></div>
-<div class="line number39 index38 alt2"><code class="html spaces">    </code><code class="html plain">white = gdImageColorAllocate(img, 255, 255, 255); // White stripes</code></div>
-<div class="line number40 index39 alt1"><code class="html spaces">   </code> </div>
-<div class="line number41 index40 alt2"> </div>
-<div class="line number42 index41 alt1"><code class="html spaces">    </code><code class="html plain">// 繪製白色矩形區域</code></div>
-<div class="line number43 index42 alt2"><code class="html spaces">    </code><code class="html plain">gdImageFilledRectangle(img, 0, 0, width, height, white);</code></div>
-<div class="line number44 index43 alt1"> </div>
-<div class="line number45 index44 alt2"> </div>
-<div class="line number46 index45 alt1"><code class="html spaces">    </code><code class="html plain">// 繪製太陽內部</code></div>
-<div class="line number47 index46 alt2"><code class="html spaces">    </code><code class="html plain">gdImageFilledEllipse(img, center_x, center_y, sun_radius * 3, sun_radius * 3, red);</code></div>
-<div class="line number48 index47 alt1"><code class="html plain">}</code></div>
 <div class="line number69 index68 alt2">
+<p></p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_254833"></div>
+<div class="syntaxhighlighter py">
+<div class="line number1 index0 alt2"><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">參照維基百科上面的日本國旗</code></div>
+<div class="line number2 index1 alt1"><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">https:</code><code class="py keyword">/</code><code class="py keyword">/</code><code class="py plain">zh.m.wikipedia.org</code><code class="py keyword">/</code><code class="py plain">zh</code><code class="py keyword">-</code><code class="py plain">tw</code><code class="py keyword">/</code><code class="py keyword">%</code><code class="py plain">E6</code><code class="py keyword">%</code><code class="py value">97</code><code class="py keyword">%</code><code class="py plain">A5</code><code class="py keyword">%</code><code class="py plain">E6</code><code class="py keyword">%</code><code class="py value">9C</code><code class="py keyword">%</code><code class="py plain">AC</code></div>
+<div class="line number3 index2 alt2"><code class="py comments">#include &lt;stdio.h&gt;</code></div>
+<div class="line number4 index3 alt1"><code class="py comments">#include &lt;gd.h&gt;</code></div>
+<div class="line number5 index4 alt2"><code class="py comments">#include &lt;math.h&gt;</code></div>
+<div class="line number6 index5 alt1"> </div>
+<div class="line number7 index6 alt2"><code class="py plain">void draw_japan_flag(gdImagePtr img);</code></div>
+<div class="line number8 index7 alt1"><code class="py plain">void draw_white_sun(gdImagePtr img, </code><code class="py functions">int</code> <code class="py plain">center_x, </code><code class="py functions">int</code> <code class="py plain">center_y, </code><code class="py functions">int</code> <code class="py plain">sun_radius, </code><code class="py functions">int</code> <code class="py plain">white, </code><code class="py functions">int</code> <code class="py plain">red );</code></div>
+<div class="line number9 index8 alt2"> </div>
+<div class="line number10 index9 alt1"><code class="py functions">int</code> <code class="py plain">main() {</code></div>
+<div class="line number11 index10 alt2"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">width </code><code class="py value">3</code><code class="py plain">: height </code><code class="py value">2</code></div>
+<div class="line number12 index11 alt1"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">width </code><code class="py keyword">=</code> <code class="py value">1200</code><code class="py plain">;</code></div>
+<div class="line number13 index12 alt2"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">height </code><code class="py keyword">=</code> <code class="py value">2</code> <code class="py keyword">*</code> <code class="py plain">width </code><code class="py keyword">/</code> <code class="py value">3</code><code class="py plain">;</code></div>
+<div class="line number14 index13 alt1"> </div>
+<div class="line number15 index14 alt2"><code class="py spaces">    </code><code class="py plain">gdImagePtr img </code><code class="py keyword">=</code> <code class="py plain">gdImageCreateTrueColor(width, height);</code></div>
+<div class="line number16 index15 alt1"><code class="py spaces">    </code><code class="py plain">gdImageAlphaBlending(img, </code><code class="py value">0</code><code class="py plain">);</code></div>
+<div class="line number17 index16 alt2"> </div>
+<div class="line number18 index17 alt1"><code class="py spaces">    </code><code class="py plain">draw_japan_flag(img);</code></div>
+<div class="line number19 index18 alt2"> </div>
+<div class="line number20 index19 alt1"><code class="py spaces">    </code><code class="py functions">FILE</code> <code class="py keyword">*</code><code class="py plain">outputFile </code><code class="py keyword">=</code> <code class="py plain">fopen(</code><code class="py string">"./../images/japan_flag.png"</code><code class="py plain">, </code><code class="py string">"wb"</code><code class="py plain">);</code></div>
+<div class="line number21 index20 alt2"><code class="py spaces">    </code><code class="py keyword">if</code> <code class="py plain">(outputFile </code><code class="py keyword">=</code><code class="py keyword">=</code> <code class="py plain">NULL) {</code></div>
+<div class="line number22 index21 alt1"><code class="py spaces">        </code><code class="py plain">fprintf(stderr, </code><code class="py string">"Error opening the output file.\n"</code><code class="py plain">);</code></div>
+<div class="line number23 index22 alt2"><code class="py spaces">        </code><code class="py keyword">return</code> <code class="py value">1</code><code class="py plain">;</code></div>
+<div class="line number24 index23 alt1"><code class="py spaces">    </code><code class="py plain">}</code></div>
+<div class="line number25 index24 alt2"><code class="py spaces">    </code><code class="py plain">gdImagePngEx(img, outputFile, </code><code class="py value">9</code><code class="py plain">);</code></div>
+<div class="line number26 index25 alt1"><code class="py spaces">    </code><code class="py plain">fclose(outputFile);</code></div>
+<div class="line number27 index26 alt2"><code class="py spaces">    </code><code class="py plain">gdImageDestroy(img);</code></div>
+<div class="line number28 index27 alt1"><code class="py spaces">    </code><code class="py keyword">return</code> <code class="py value">0</code><code class="py plain">;</code></div>
+<div class="line number29 index28 alt2"><code class="py plain">}</code></div>
+<div class="line number30 index29 alt1"> </div>
+<div class="line number31 index30 alt2"><code class="py plain">void draw_japan_flag(gdImagePtr img) {</code></div>
+<div class="line number32 index31 alt1"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">width </code><code class="py keyword">=</code> <code class="py plain">gdImageSX(img);</code></div>
+<div class="line number33 index32 alt2"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">height </code><code class="py keyword">=</code> <code class="py plain">gdImageSY(img);</code></div>
+<div class="line number34 index33 alt1"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">red, white ;</code></div>
+<div class="line number35 index34 alt2"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">center_x </code><code class="py keyword">=</code>  <code class="py value">0.5</code> <code class="py keyword">*</code> <code class="py plain">width;</code></div>
+<div class="line number36 index35 alt1"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">center_y </code><code class="py keyword">=</code>  <code class="py value">0.5</code> <code class="py keyword">*</code> <code class="py plain">height;</code></div>
+<div class="line number37 index36 alt2"><code class="py spaces">    </code><code class="py functions">int</code> <code class="py plain">sun_radius </code><code class="py keyword">=</code> <code class="py value">145</code> <code class="py plain">;</code></div>
+<div class="line number38 index37 alt1"> </div>
+<div class="line number39 index38 alt2"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">Colors </code><code class="py keyword">for</code> <code class="py plain">the flag</code></div>
+<div class="line number40 index39 alt1"><code class="py spaces">    </code><code class="py plain">red </code><code class="py keyword">=</code> <code class="py plain">gdImageColorAllocate(img, </code><code class="py value">242</code><code class="py plain">, </code><code class="py value">0</code><code class="py plain">, </code><code class="py value">0</code><code class="py plain">); </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">Red color</code></div>
+<div class="line number41 index40 alt2"><code class="py spaces">    </code><code class="py plain">white </code><code class="py keyword">=</code> <code class="py plain">gdImageColorAllocate(img, </code><code class="py value">255</code><code class="py plain">, </code><code class="py value">255</code><code class="py plain">, </code><code class="py value">255</code><code class="py plain">); </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">White stripes</code></div>
+<div class="line number42 index41 alt1"><code class="py spaces">   </code> </div>
+<div class="line number43 index42 alt2"> </div>
+<div class="line number44 index43 alt1"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">繪製白色矩形區域</code></div>
+<div class="line number45 index44 alt2"><code class="py spaces">    </code><code class="py plain">gdImageFilledRectangle(img, </code><code class="py value">0</code><code class="py plain">, </code><code class="py value">0</code><code class="py plain">, width, height, white);</code></div>
+<div class="line number46 index45 alt1"> </div>
+<div class="line number47 index46 alt2"> </div>
+<div class="line number48 index47 alt1"><code class="py spaces">    </code><code class="py keyword">/</code><code class="py keyword">/</code> <code class="py plain">繪製太陽</code></div>
+<div class="line number49 index48 alt2"><code class="py spaces">    </code><code class="py plain">gdImageFilledEllipse(img, center_x, center_y, sun_radius </code><code class="py keyword">*</code> <code class="py value">3</code><code class="py plain">, sun_radius </code><code class="py keyword">*</code> <code class="py value">3</code><code class="py plain">, red);</code></div>
+<div class="line number50 index49 alt1"><code class="py plain">}</code></div>
+</div>
+</div>
 <p>clear</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cd downloads</span></span></span></span></span></span></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_roc_flag.c-lgd-lm</span></span></span></span></span></span></p>
