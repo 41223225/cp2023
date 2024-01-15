@@ -358,17 +358,17 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p>void draw_usa_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;//開始繪製美國國旗，並給予外框、需另外加入的工具</p>
 <p>// <br/> red = gdImageColorAllocate(img, 178, 34, 52); // 红色条纹<br/> white = gdImageColorAllocate(img, 255, 255, 255); // 白色条纹<br/> blue = gdImageColorAllocate(img, 60, 59, 110); // 蓝色矩形</p>
 <p>int stripe_height = height / 13;<br/> int stripe_width = width;<br/> int star_size = (int)(0.0308 * height); // 星星大小</p>
-<p>for (int y = 0; y &lt; height; y += stripe_height) {<br/> if (y / stripe_height % 2 == 0) {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, red);<br/> } else {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, white);<br/> }<br/> }//這段話表示在此功能中我們將會利用</p>
-<p>gdImageFilledRectangle(img, 0, 0, width * 2 / 5, stripe_height * 7, blue);</p>
+<p>for (int y = 0; y &lt; height; y += stripe_height) {<br/> if (y / stripe_height % 2 == 0) {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, red);<br/> } else {<br/> gdImageFilledRectangle(img, 0, y, stripe_width, y + stripe_height, white);<br/> }<br/> }//這段話表示在此功能中我們將會把圖形按照基偶數給予顏色(偶數紅基數白)而高度就是上述給予的stripe_height</p>
+<p>gdImageFilledRectangle(img, 0, 0, width * 2 / 5, stripe_height * 7, blue);//將線條塗上顏色</p>
 <p>int star_spacing_x = (int)(0.129 * height); // 横向星星之间的间距<br/> int star_spacing_y = (int)(0.054 * height); // 纵向星星之间的间距<br/> int star_start_x = (int)(0.125 * height); // 星星的起始X位置<br/> int star_start_y = (int)(0.0485 * height); // 星星的起始Y位置</p>
-<p>for (int row = 0; row &lt; 9; row++) {<br/> int starsPerRow = (row % 2 == 0) ? 6 : 5;</p>
+<p>for (int row = 0; row &lt; 9; row++) {<br/> int starsPerRow = (row % 2 == 0) ? 6 : 5;//<span>這個迴圈用來迭代 </span><code>row</code><span> 變數，並根據 </span><code>row</code><span> 的奇偶性設定每行應該有的星星數目。在偶數行中，</span><code>starsPerRow</code><span> 被設為 6，而在奇數行中設為 5</span></p>
 <p>// 计算2、4、6和8排星星的偏移量<br/> int offset_x = (row % 2 == 0) ? star_spacing_x / -2 : 0;</p>
-<p>for (int star = 0; star &lt; starsPerRow; star++) {<br/> int x = star_start_x + star * star_spacing_x + offset_x;</p>
-<p>// 旋转角度（以弧度为单位）<br/> double rotation_angle = M_PI / 5; // 忘記多少度的旋转</p>
-<p>int y = star_start_y + row * star_spacing_y;<br/> draw_star(img, x, y, star_size, white, rotation_angle);<br/> }<br/> }<br/>}</p>
-<p>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {<br/> gdPoint points[10];</p>
-<p>for (int i = 0; i &lt; 10; i++) {<br/> double angle = M_PI / 2 + i * 2 * M_PI / 10 + rotation_angle;<br/> int radius = (i % 2 == 0) ? size : size / 2;<br/> points[i].x = x + radius * cos(angle);<br/> points[i].y = y + radius * sin(angle);<br/> }</p>
-<p>// 用指定的颜色填充星星<br/> gdImageFilledPolygon(img, points, 10, color);<br/>}</p>
+<p>for (int star = 0; star &lt; starsPerRow; star++) {<br/> int x = star_start_x + star * star_spacing_x + offset_x;//<span>迴圈用於計算每一顆星星的 x 座標。這樣的邏輯可以用來在每一行裡生成特定模式的星星排列。</span></p>
+<p>// 旋转角度（以弧度为单位）<br/> double rotation_angle = M_PI / 5; //<span>這代表著每一顆星星的旋轉角度是圓周率的五分之一。這樣的設定可以產生一種均勻分佈的星星旋轉效果</span></p>
+<p>int y = star_start_y + row * star_spacing_y;//見算每個y座標的位置上下偏差<br/> draw_star(img, x, y, star_size, white, rotation_angle);//在星星的圖形中載入剛剛給予的座標以及參數<br/> }<br/> }<br/>}</p>
+<p>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {<br/> gdPoint points[10];//<span>此為打開這個gd程式庫並且開始給予所需參數</span></p>
+<p>for (int i = 0; i &lt; 10; i++) {<br/> double angle = M_PI / 2 + i * 2 * M_PI / 10 + rotation_angle;<br/> int radius = (i % 2 == 0) ? size : size / 2;<br/> points[i].x = x + radius * cos(angle);<br/> points[i].y = y + radius * sin(angle);<br/> }//前面已將基數偶數排的星星數量及大小畫出來，而這裡是在宣告星星的起點位置以及星星的外框形狀</p>
+<p>// 用指定的颜色填充星星<br/> gdImageFilledPolygon(img, points, 10, color);//將星星塗上顏色<br/>}</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></span></span>clear</p>
 <p>cd downloads</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_usa_flag.c - lgd- lm</span></span></span></span></span></span></p>
