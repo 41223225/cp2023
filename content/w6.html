@@ -151,7 +151,7 @@ img.add_border {
 <p>FILE *outputFile = fopen("./../images/usa_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "打开输出文件时出错。\n");<br/> return 1;<br/> }//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span></p>
 <p>gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);</p>
 <p>return 0;<br/>}//此段話為將圖片輸出為img檔，而這裡的9指的是將檔案壓縮最大程度(0~9) output消除之前的file(並刷新數據)gdImageDestroy(img);同上功能，只是此為刷新輸出圖片</p>
-<p>//return 0 會將這個整數的數值傳回給作業系統, 在這個程式結束成功結束後</p>
+<p>//return 0 會將這個整數的數值傳回給作業系統, 再這個程式結束成功結束後</p>
 <p>void draw_usa_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;//開始繪製美國國旗，並給予外框、需另外加入的工具</p>
 <p>// <br/> red = gdImageColorAllocate(img, 178, 34, 52); // 红色条纹<br/> white = gdImageColorAllocate(img, 255, 255, 255); // 白色条纹<br/> blue = gdImageColorAllocate(img, 60, 59, 110); // 蓝色矩形</p>
 <p>int stripe_height = height / 13;<br/> int stripe_width = width;<br/> int star_size = (int)(0.0308 * height); // 星星大小</p>
@@ -181,7 +181,7 @@ img.add_border {
 <p>gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);//<span>然後給予創建彩色圖片，且不</span><span>允許圖像中的像素是透明或半透明(0為不允許1為允許)</span></p>
 <p>draw_roc_flag(img);</p>
 <p>FILE *outputFile = fopen("./roc_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "Error opening the output file.\n");<br/> return 1;<br/> }//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span><br/> gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);<br/> return 0;<br/>}//此段話為將圖片輸出為img檔，而這裡的9指的是將檔案壓縮最大程度(0~9) output消除之前的file(並刷新數據)gdImageDestroy(img);同上，只是此為刷新輸出圖片</p>
-<p>return 0 會將這個整數的數值傳回給作業系統, 在這個程式結束成功結束後</p>
+<p>return 0 會將這個整數的數值傳回給作業系統, 再這個程式結束成功結束後</p>
 <p>void draw_roc_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white, blue;<br/> int center_x = (int)(width/4);<br/> int center_y = (int)(height/4);<br/> int sun_radius = (int)(width/8);</p>
 <p>// 開始繪製國旗，並給予所需的顏色繪製位置<br/> red = gdImageColorAllocate(img, 242, 0, 0); // Red color<br/> white = gdImageColorAllocate(img, 255, 255, 255); // White stripes<br/> blue = gdImageColorAllocate(img, 0, 41, 204); // Blue</p>
 <p>// 繪製紅色矩形區域<br/> gdImageFilledRectangle(img, 0, 0, width, height, red);</p>
@@ -203,7 +203,9 @@ img.add_border {
 <p>cd downloads</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_roc_flag.c-lgd-lm</span></span></span></span></span></span></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><img alt="" height="533" src="./../images/roc_flag_gd.png" width="800"/></span></span></span></span></span></span>//參照維基百科上面的日本國旗</p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><img alt="" height="533" src="./../images/roc_flag_gd.png" width="800"/></span></span></span></span></span></span></p>
+<p></p>
+<p>//參照維基百科上面的日本國旗</p>
 <p>//https://zh.m.wikipedia.org/zh-tw/%E6%97%A5%E6%9C%AC</p>
 <div class="line number59 index58 alt2">
 <div class="line number69 index68 alt2">
@@ -214,7 +216,8 @@ img.add_border {
 <p>gdImageAlphaBlending(img, 0);//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span></p>
 <div class="line number6 index5 alt1"></div>
 <p>draw_japan_flag(img);</p>
-<p>FILE *outputFile = fopen("./../images/japan_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "Error opening the output file.\n");<br/> return 1;<br/> }//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span><br/> gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);<br/> return 0;<br/>}//<span>此段話為將圖片輸出為img檔，而這裡的9指的是將檔案壓縮最大程度(0~9) output消除之前的file(並刷新數據)gdImageDestroy(img);同上，只是此為刷新輸出圖片</span></p>
+<p>FILE *outputFile = fopen("./../images/japan_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "Error opening the output file.\n");<br/> return 1;<br/> }//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span><br/> gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);<br/> return 0;<br/>}//此段話為將圖片輸出為img檔，而這裡的9指的是將檔案壓縮最大程度(0~9) output消除之前的file(並刷新數據)gdImageDestroy(img);同上，只是此為刷新輸出圖片</p>
+<p>return 0 會將這個整數的數值傳回給作業系統, 再這個程式結束成功結束後。</p>
 <p>void draw_japan_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white ;<br/> int center_x = 0.5 * width;//這裡指的是<span> center_x是一半的width</span><br/> int center_y = 0.5 * height;//功能同上只是在此變成<span>center_y是一半height</span><br/> int sun_radius = 145 ;</p>
 <p>//<span>此為打開這個gd程式庫，並給予所需參數</span></p>
 <p>// Colors for the flag<br/> red = gdImageColorAllocate(img, 242, 0, 0); // Red color<br/> white = gdImageColorAllocate(img, 255, 255, 255); // White stripes</p>
@@ -230,22 +233,29 @@ img.add_border {
 <div class="line number59 index58 alt2">
 <div class="line number1 index0 alt2"><code class="js preprocessor"></code></div>
 <div class="line number83 index82 alt2">
-<p>//參照維基百科上面的中國國旗<br/>//https://zh.m.wikipedia.org/zh-tw/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%9B%BD%E6%97%97<br/>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
-<p>void draw_chinese_flag(gdImagePtr img);</p>
+<p>//參照維基百科上面的中國國旗</p>
+<p>//https://zh.m.wikipedia.org/zh-tw/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%9B%BD%E6%97%97<br/>#include &lt;stdio.h&gt;//<span>用於輸入和輸出的函數</span><span> (列印文字等等)</span><br/>#include &lt;gd.h&gt;//<span>繪圖工具</span><br/>#include &lt;math.h&gt;//<span>計算工具</span></p>
+<p>void draw_chinese_flag(gdImagePtr img);//<span>繪製此檔，並以img的圖片格式匯出</span></p>
 <p>int main() {<br/> int width = 300; // 國旗寬度<br/> int height = 200; // 國旗高度</p>
-<p>gdImagePtr im = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(im, 0);</p>
-<p>draw_chinese_flag(im);</p>
-<p>FILE *outputFile = fopen("./../images/proc_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "打开输出文件时出错。\n");<br/> return 1;<br/> }</p>
+<p>gdImagePtr im = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(im, 0);//</p>
+<div class="line number6 index5 alt1">給予創建彩色圖片，且不<span>允許圖像中的像素是透明或半透明(0為不允許1為允許)</span></div>
+<p>(將繪製圖形出圖的形式)</p>
+<p>draw_chinese_flag(img);</p>
+<p>FILE *outputFile = fopen("./../images/proc_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "打开输出文件时出错。\n");<br/> return 1;<br/> }//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span></p>
 <p>gdImagePngEx(im, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(im);</p>
-<p>return 0;<br/>}</p>
+<p>return 0;<br/>}//此段話為將圖片輸出為img檔，而這裡的9指的是將檔案壓縮最大程度(0~9) output消除之前的file(並刷新數據)gdImageDestroy(img);同上，只是此為刷新輸出圖片</p>
+<p>return 0 會將這個整數的數值傳回給作業系統, 再這個程式結束成功結束後。</p>
 <p>// 声明 draw_star 函数<br/>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle);</p>
-<p>void draw_chinese_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, yellow;</p>
+<p>void draw_chinese_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, yellow;//需加入這三個顏色</p>
 <p>// 國旗顏色<br/> red = gdImageColorAllocate(img, 255, 0, 0); // 紅色背景<br/> yellow = gdImageColorAllocate(img, 255, 255, 0); // 黃色星星</p>
+<p>//<span>這裡是給予你所需要的顏色(後面三排數字分別為RAD 紅，綠，藍  顏色亮度，最高亮度為255)</span></p>
 <p>// 畫紅色背景<br/> gdImageFilledRectangle(img, 0, 0, width, height, red);</p>
-<p>// 設置星星的大小和位置<br/> int star_size = (int)(0.28 * height);<br/> int star_x = (int)(0.165 * width);<br/> int star_y = (int)(0.265 * height);</p>
-<p>// 畫大星星<br/> draw_star(img, star_x, star_y, star_size, yellow, 11.0);</p>
-<p>// 繪製小星星，位置根據實際國旗比例計算<br/> double radius = 0.15 * height;<br/> double angle = 360 / 7 * M_PI / 179.0;<br/> double rotation = -M_PI / 7.5;<br/> int cx = (int)(0.32 * width);<br/> int cy = (int)(0.27 * height);</p>
-<p>for (int i = -1; i &lt; 3; i++) {<br/> int x = (int)(cx + radius * cos(i * angle + rotation));<br/> int y = (int)(cy + radius * sin(i * angle + rotation));<br/> draw_star(img, x, y, 19, yellow, M_PI / 5.0);<br/> }<br/>}</p>
+<p>// 設置星星的大小和位置<br/> int star_size = (int)(0.28 * height);//星星的大小是0.28倍的height<br/> int star_x = (int)(0.165 * width);//星星在x軸上是總寬度的0.165倍<br/> int star_y = (int)(0.265 * height);//<span>星星在y軸上是總高度的0.165倍</span></p>
+<p>// 畫大星星<br/> draw_star(img, star_x, star_y, star_size, yellow, 11.0);//<span>此為打開這個gd程式庫，並</span>宣告繪製星星所需的參數</p>
+<p>// 繪製小星星，位置根據實際國旗比例計算<br/> double radius = 0.15 * height;//星星的半徑是0.15倍的總高度<br/> double angle = 360 / 7 * M_PI / 179.0;//星星的五個頂點夾角<br/> double rotation = -M_PI / 7.5;//星星整體旋轉角度<br/> int cx = (int)(0.32 * width);//星星的位置為0.32倍的總寬度<br/> int cy = (int)(0.27 * height);//<span>//星星的位置為0.27倍的總高度</span></p>
+<p>//此處為小星星的大小及夾角及選轉角度</p>
+<p>for (int i = -1; i &lt; 3; i++) //將星星迴轉四份{<br/> int x = (int)(cx + radius * cos(i * angle + rotation));//x軸差距<br/> int y = (int)(cy + radius * sin(i * angle + rotation));//y軸差距<br/> draw_star(img, x, y, 19, yellow, M_PI / 5.0);//繪製星星，並給予所需參數<br/> }<br/>}</p>
+<p>//<span>那麼這個的意思是將星星旋轉四份然後各別位置差距是上述的int x、y</span></p>
 <p>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {<br/> gdPoint points[10];</p>
 <p>// 计算星形的五个外点和五个内点<br/> double outer_radius = size / 2;<br/> double inner_radius = size / 6;<br/> double angle = M_PI / 5.0;</p>
 <p>for (int i = 0; i &lt; 10; i++) {<br/> double radius = (i % 2 == 0) ? outer_radius : inner_radius;<br/> double theta = rotation_angle + i * angle;<br/> points[i].x = x + radius * cos(theta);<br/> points[i].y = y + radius * sin(theta);<br/> }</p>
@@ -636,7 +646,8 @@ img.add_border {
 <div class="syntaxhighlighter html"><img alt="" height="200" src="./../images/英國國旗.png" width="400"/></div>
 </div>
 </div>
-</div><br />W5 << <a href='W5.html'>Previous</a> <a href='W8-w9.html'>Next</a> >> W8-w9</div>
+</div>
+<br />W5 << <a href='W5.html'>Previous</a> <a href='W8-w9.html'>Next</a> >> W8-w9</div>
         
     <!-- footer -->
       <div class="container">

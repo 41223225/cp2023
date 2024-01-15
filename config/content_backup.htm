@@ -406,23 +406,24 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p>cd downloads</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_roc_flag.c-lgd-lm</span></span></span></span></span></span></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">./a.out</span></span></span></span></span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><img alt="" height="533" src="/images/roc_flag_gd.png" width="800"/></span></span></span></span></span></span></p>
-<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"></span></span></span></span></span></span></p>
+<p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><img alt="" height="533" src="/images/roc_flag_gd.png" width="800"/></span></span></span></span></span></span>//參照維基百科上面的日本國旗</p>
+<p>//https://zh.m.wikipedia.org/zh-tw/%E6%97%A5%E6%9C%AC</p>
 <div class="line number59 index58 alt2">
 <div class="line number69 index68 alt2">
-<div>
-<div class="syntaxhighlighter py"></div>
-</div>
-<p>//參照維基百科上面的日本國旗<br/>//https://zh.m.wikipedia.org/zh-tw/%E6%97%A5%E6%9C%AC<br/>#include &lt;stdio.h&gt;<br/>#include &lt;gd.h&gt;<br/>#include &lt;math.h&gt;</p>
-<p>void draw_japan_flag(gdImagePtr img);<br/>void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int white, int red );</p>
-<p>int main() {<br/> // width 3: height 2<br/> int width = 1200;<br/> int height = 2 * width / 3;</p>
-<p>gdImagePtr img = gdImageCreateTrueColor(width, height);<br/> gdImageAlphaBlending(img, 0);</p>
+<p>#include &lt;stdio.h&gt;//<span>用於輸入和輸出的函數</span><span> (列印文字等等)</span><br/>#include &lt;gd.h&gt;//<span>繪圖工具</span><br/>#include &lt;math.h&gt;//<span>計算工具</span></p>
+<p>void draw_japan_flag(gdImagePtr img);//<span>繪製國旗，並以img的圖片格式匯出</span><br/>void draw_white_sun(gdImagePtr img, int center_x, int center_y, int sun_radius, int white, int red );//<span>繪製太陽，並以img的圖片格式匯出，再宣告所需工具及參數</span></p>
+<p>int main() {<br/> // width 3: height 2<br/> int width = 1200;<br/> int height = 2 * width / 3;//給予國旗外框</p>
+<p>gdImagePtr img = gdImageCreateTrueColor(width, height);</p>
+<p>gdImageAlphaBlending(img, 0);//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span></p>
+<div class="line number6 index5 alt1"></div>
 <p>draw_japan_flag(img);</p>
-<p>FILE *outputFile = fopen("./../images/japan_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "Error opening the output file.\n");<br/> return 1;<br/> }<br/> gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);<br/> return 0;<br/>}</p>
-<p>void draw_japan_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white ;<br/> int center_x = 0.5 * width;<br/> int center_y = 0.5 * height;<br/> int sun_radius = 145 ;</p>
+<p>FILE *outputFile = fopen("./../images/japan_flag.png", "wb");<br/> if (outputFile == NULL) {<br/> fprintf(stderr, "Error opening the output file.\n");<br/> return 1;<br/> }//<span>此段話為把圖檔存在哪裡，並且嘗試打開，如打開失敗將會輸入一個非零的值(</span><span>錯誤碼)</span><br/> gdImagePngEx(img, outputFile, 9);<br/> fclose(outputFile);<br/> gdImageDestroy(img);<br/> return 0;<br/>}//<span>此段話為將圖片輸出為img檔，而這裡的9指的是將檔案壓縮最大程度(0~9) output消除之前的file(並刷新數據)gdImageDestroy(img);同上，只是此為刷新輸出圖片</span></p>
+<p>void draw_japan_flag(gdImagePtr img) {<br/> int width = gdImageSX(img);<br/> int height = gdImageSY(img);<br/> int red, white ;<br/> int center_x = 0.5 * width;//這裡指的是<span> center_x是一半的width</span><br/> int center_y = 0.5 * height;//功能同上只是在此變成<span>center_y是一半height</span><br/> int sun_radius = 145 ;</p>
+<p>//<span>此為打開這個gd程式庫，並給予所需參數</span></p>
 <p>// Colors for the flag<br/> red = gdImageColorAllocate(img, 242, 0, 0); // Red color<br/> white = gdImageColorAllocate(img, 255, 255, 255); // White stripes</p>
-<p><br/> // 繪製白色矩形區域<br/> gdImageFilledRectangle(img, 0, 0, width, height, white);</p>
-<p><br/> // 繪製太陽<br/> gdImageFilledEllipse(img, center_x, center_y, sun_radius * 3, sun_radius * 3, red);<br/>}</p>
+<p>//<span>這裡是給予你所需要的顏色(後面三排數字分別為RAD 紅，綠，藍  顏色亮度，最高亮度為255)</span></p>
+<p><br/>// 將白色矩形區域塗色<br/> gdImageFilledRectangle(img, 0, 0, width, height, white);</p>
+<p><br/> // 將太陽塗色<br/> gdImageFilledEllipse(img, center_x, center_y, sun_radius * 3, sun_radius * 3, red);<br/>}</p>
 <p>clear</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cd downloads</span></span></span></span></span></span></p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cc gd_roc_flag.c-lgd-lm</span></span></span></span></span></span></p>
@@ -838,8 +839,7 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="syntaxhighlighter html"><img alt="" height="200" src="/images/英國國旗.png" width="400"/></div>
 </div>
 </div>
-</div>
-<h1>W8-w9</h1>
+</div><h1>W8-w9</h1>
 <p>分組</p>
 <h1>w12</h1>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">{ pkgs }: { </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">deps = [ </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.llvmPackages_rocm.clang </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.gd </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.gnuplot </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">]; </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">}</span></span></span></span></span></span></p>
