@@ -1149,6 +1149,8 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p><span>2給予圖形們常用的工具</span></p>
 <p>此為打開這個gd程式庫，並給予所需參數</p>
 <p><span>void draw_usa_flag(gdImagePtr img) {</span><br/><span>int width = gdImageSX(img);</span><br/><span>int height = gdImageSY(img);</span><br/><span>int red, white, blue</span> </p>
+<p><span>這裡是給予你所需要的顏色(後面三排數字分別為RAD 紅，綠，藍  顏色亮度，最高亮度為255)</span></p>
+<p><span>red = gdImageColorAllocate(img, 178, 34, 52); // 红色条纹</span><br/><span>white = gdImageColorAllocate(img, 255, 255, 255); // 白色条纹</span><br/><span>blue = gdImageColorAllocate(img, 60, 59, 110); // 蓝色矩形</span></p>
 <p></p>
 <p><span></span></p><h1>期末總結</h1>
 <p><span>個人評分75</span></p>
