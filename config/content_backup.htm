@@ -460,8 +460,9 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <p>for (int i = -1; i &lt; 3; i++) //將星星迴轉四份{<br/> int x = (int)(cx + radius * cos(i * angle + rotation));//x軸差距<br/> int y = (int)(cy + radius * sin(i * angle + rotation));//y軸差距<br/> draw_star(img, x, y, 19, yellow, M_PI / 5.0);//繪製星星，並給予所需參數<br/> }<br/>}</p>
 <p>//<span>那麼這個的意思是將星星旋轉四份然後各別位置差距是上述的int x、y</span></p>
 <p>void draw_star(gdImagePtr img, int x, int y, int size, int color, double rotation_angle) {<br/> gdPoint points[10];</p>
-<p>// 计算星形的五个外点和五个内点<br/> double outer_radius = size / 2;<br/> double inner_radius = size / 6;<br/> double angle = M_PI / 5.0;</p>
-<p>for (int i = 0; i &lt; 10; i++) {<br/> double radius = (i % 2 == 0) ? outer_radius : inner_radius;<br/> double theta = rotation_angle + i * angle;<br/> points[i].x = x + radius * cos(theta);<br/> points[i].y = y + radius * sin(theta);<br/> }</p>
+<p>// 计算星形的五个外点和五个内点<br/> double outer_radius = size / 2;//外部半徑為外框的2分之1<br/> double inner_radius = size / 6;//內部半徑為外框的六分之一<br/> double angle = M_PI / 5.0;//然後將夾角除以五</p>
+<p>for (int i = 0; i &lt; 10; i++)//選轉出時個頂點 {<br/> double radius = (i % 2 == 0) ? outer_radius : inner_radius;//依照基偶數選擇內外頂點<br/> double theta = rotation_angle + i * angle;//<span>計算每個頂點的極坐標角度，考慮到整體的旋轉角度</span><br/> points[i].x = x + radius * cos(theta);//<span>根據極坐標轉換，計算每個頂點的 x 座標。</span><br/> points[i].y = y + radius * sin(theta);//<span>根據極坐標轉換，計算每個頂點的 y座標。</span><br/> }</p>
+<p>//此為將星星的外部五點及內部五點利用圓形夾角求出，並將他們連在一起形成一個五邊形的星形</p>
 <p>// 使用 gdImageFilledPolygon 绘制星形<br/> gdImageFilledPolygon(img, points, 10, color);<br/>}</p>
 <p>clear</p>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">cd downloads</span></span></span></span></span></span></p>
@@ -849,8 +850,7 @@ int main() {</span></span></span></span></span></span><span></span><span style="
 <div class="syntaxhighlighter html"><img alt="" height="200" src="/images/英國國旗.png" width="400"/></div>
 </div>
 </div>
-</div>
-<h1>W8-w9</h1>
+</div><h1>W8-w9</h1>
 <p>分組</p>
 <h1>w12</h1>
 <p><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">{ pkgs }: { </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">deps = [ </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.llvmPackages_rocm.clang </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.gd </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">pkgs.gnuplot </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">]; </span></span></span></span></span></span><br/><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">}</span></span></span></span></span></span></p>
